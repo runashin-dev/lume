@@ -122,4 +122,642 @@ body {
 .gender-title { font-size: 22px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 8px; letter-spacing: -0.02em; }
 .gender-sub { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 28px; line-height: 1.6; }
 .gender-btns { display: flex; gap: 14px; }
-.g-btn { flex: 1; padding: 28px 14px; border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); background: white; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); text-align: center; box-shadow: var(--card-shadow);
+.g-btn { flex: 1; padding: 28px 14px; border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); background: white; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); text-align: center; box-shadow: var(--card-shadow); }
+.g-btn:hover { border-color: var(--color-point); transform: translateY(-2px); }
+.g-btn.selected { border-color: var(--color-point); background: var(--color-point-bg); box-shadow: 0 8px 20px rgba(200, 149, 108, 0.15); }
+.g-icon { font-size: 36px; color: var(--color-point); margin-bottom: 10px; }
+.g-label { font-size: 16px; font-weight: 600; color: var(--color-text-primary); }
+
+/* 업로드 박스 */
+.upload-box { border: 1.5px dashed var(--color-border-secondary); border-radius: var(--border-radius-lg); padding: 2.5rem 1rem; text-align: center; cursor: pointer; position: relative; transition: all 0.2s; background: var(--color-background-secondary); }
+.upload-box:hover { border-color: var(--color-point); background: white; }
+.upload-box input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.preview-img { width: 100%; border-radius: var(--border-radius-lg); max-height: 280px; object-fit: cover; display: none; margin-bottom: 16px; box-shadow: var(--card-shadow); }
+.guide-box { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1.15rem; margin-top: 14px; border: 1px solid var(--color-border-tertiary); }
+.guide-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--color-text-primary); margin-bottom: 8px; font-weight: 500; }
+.guide-row:last-child { margin-bottom: 0; }
+
+/* 로딩 */
+.loading-wrap { display: none; text-align: center; padding: 5rem 1.5rem; }
+.spinner { width: 42px; height: 42px; border: 3px solid #e5e5ea; border-top-color: var(--color-point); border-radius: 50%; animation: spin 0.8s cubic-bezier(0.6, 0.2, 0.1, 1) infinite; margin: 0 auto 1.5rem; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.l-msg { font-size: 17px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 6px; }
+.l-sub { font-size: 13px; color: var(--color-text-secondary); }
+
+.err-box { background: #FCEBEB; border: 1px solid #F09595; border-radius: var(--border-radius-md); padding: 12px 14px; margin: 0 1rem 12px; font-size: 13px; color: #791F1F; display: none; line-height: 1.6; }
+
+/* 탭 메뉴 */
+.report-tabs { display: flex; border-bottom: 1px solid var(--color-border-tertiary); background: white; position: sticky; top: 61px; z-index: 9; }
+.rtab { flex: 1; padding: 14px 4px; text-align: center; font-size: 14px; font-weight: 600; cursor: pointer; color: var(--color-text-secondary); border-bottom: 3px solid transparent; transition: all 0.15s; }
+.rtab.active { color: var(--color-point); border-bottom-color: var(--color-point); }
+.tab-panel { display: none; padding: 1.25rem 1rem 0; }
+.tab-panel.active { display: block; }
+
+/* 차트 요소 */
+.legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; padding: 4px 0; }
+.leg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--color-text-secondary); font-weight: 500; }
+.leg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+.bar-section { margin-bottom: 24px; }
+.bar-section:last-child { margin-bottom: 0; }
+.bar-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.bar-name { font-size: 14px; font-weight: 600; color: var(--color-text-primary); }
+.bar-value { font-size: 12px; font-weight: 700; border-radius: 20px; padding: 3px 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+.val-above { background: #EAF3DE; color: #27500A; }
+.val-avg { background: var(--color-background-secondary); color: var(--color-text-secondary); border: 0.5px solid var(--color-border-secondary); }
+.val-below { background: #FCEBEB; color: #791F1F; }
+
+.bar-wrap { position: relative; height: 14px; background: #eeeef4; border-radius: 7px; overflow: visible; margin-bottom: 24px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.06); }
+.bar-fill { height: 100%; border-radius: 7px; width: 0; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.fill-above { background: linear-gradient(90deg, #8bc34a, #639922); }
+.fill-avg { background: linear-gradient(90deg, #a1a1aa, #71717a); }
+.fill-below { background: linear-gradient(90deg, #f87171, #e24b4a); }
+
+.avg-mark { position: absolute; top: -4px; display: flex; flex-direction: column; align-items: center; transform: translateX(-50%); z-index: 2; }
+.avg-mark-line { width: 2px; height: 22px; background: #C8956C; border-radius: 1px; box-shadow: 0 0 4px rgba(200, 149, 108, 0.5); }
+.avg-mark-label { font-size: 10px; color: #C8956C; white-space: nowrap; margin-top: 4px; font-weight: 700; background: white; padding: 0 2px; }
+.golden-mark { position: absolute; top: -4px; display: flex; flex-direction: column; align-items: center; transform: translateX(-50%); z-index: 2; }
+.golden-mark-line { width: 2px; height: 22px; background: #378ADD; border-radius: 1px; opacity: 0.9; box-shadow: 0 0 4px rgba(55, 138, 221, 0.5); }
+.golden-mark-label { font-size: 10px; color: #378ADD; white-space: nowrap; margin-top: 4px; font-weight: 700; background: white; padding: 0 2px; }
+.bar-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; margin-top: -12px; font-weight: 400; }
+
+/* 세로비율 컴포넌트 */
+.ratio-visual { display: flex; gap: 18px; margin-bottom: 18px; background: var(--color-background-secondary); padding: 1rem; border-radius: var(--border-radius-md); border: 1px solid var(--color-border-tertiary); }
+.ratio-face { width: 76px; flex-shrink: 0; display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border-secondary); height: 150px; box-shadow: var(--card-shadow); }
+.ratio-seg { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.2); transition: flex 0.5s ease; }
+.ratio-labels { flex: 1; display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+.ratio-label-item { display: flex; align-items: flex-start; gap: 10px; }
+.ratio-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.ratio-main { font-size: 14px; font-weight: 600; color: var(--color-text-primary); }
+.ratio-sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
+
+/* 상세 이목구비 */
+.group-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-secondary); margin: 20px 0 10px; padding-left: 2px; }
+.group-title:first-child { margin-top: 0; }
+.feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.feat-card { border-radius: var(--border-radius-md); padding: 14px 12px; border: 1px solid transparent; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+.feat-good { background: #EAF3DE; border-color: #C0DD97; }
+.feat-good .feat-title { color: #27500A; }
+.feat-good .feat-sub { color: #3B6D11; }
+.feat-good .feat-icon { color: #639922; }
+.feat-neu { background: var(--color-background-secondary); border-color: var(--color-border-secondary); }
+.feat-neu .feat-title { color: var(--color-text-primary); }
+.feat-neu .feat-sub { color: var(--color-text-secondary); }
+.feat-neu .feat-icon { color: var(--color-text-secondary); }
+.feat-warn { background: #FCEBEB; border-color: #F09595; }
+.feat-warn .feat-title { color: #791F1F; }
+.feat-warn .feat-sub { color: #A32D2D; }
+.feat-warn .feat-icon { color: #E24B4A; }
+.feat-icon { font-size: 18px; margin-bottom: 6px; display: block; }
+.feat-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.feat-sub { font-size: 12px; line-height: 1.5; }
+
+/* 피부톤 */
+.tone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.tone-item { border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); overflow: hidden; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
+.tone-swatch { height: 44px; box-shadow: inset 0 -5px 10px rgba(0,0,0,0.03); }
+.tone-info { padding: 10px 12px; }
+.tone-cat { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-secondary); margin-bottom: 3px; font-weight: 700; }
+.tone-name { font-size: 13px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 6px; }
+.tone-product { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
+
+/* 헤어 추천 */
+.hair-item { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px; margin-bottom: 10px; border: 1px solid var(--color-border-tertiary); }
+.hair-item:last-child { margin-bottom: 0; }
+.hair-badge { display: inline-block; font-size: 10px; padding: 2px 10px; border-radius: 20px; margin-bottom: 6px; font-weight: 700; letter-spacing: -0.01em; }
+.badge-good { background: #EAF3DE; color: #27500A; border: 0.5px solid #C0DD97; }
+.badge-warn { background: #FCEBEB; color: #A32D2D; border: 0.5px solid #F09595; }
+.hair-name { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 4px; }
+.hair-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.pill { padding: 5px 12px; border-radius: 30px; font-size: 13px; font-weight: 500; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.pill-good { background: #EAF3DE; color: #27500A; border: 0.5px solid #C0DD97; }
+.pill-warn { background: #FCEBEB; color: #A32D2D; border: 0.5px solid #F09595; }
+
+/* 메이크업 피드백 */
+.score-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+.score-num { font-size: 44px; font-weight: 700; color: var(--color-text-primary); line-height: 1; letter-spacing: -0.03em; }
+.score-bar { height: 8px; background: #eeeef4; border-radius: 4px; overflow: hidden; flex: 1; box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); }
+.score-fill { height: 100%; background: linear-gradient(90deg, var(--color-point), #b87e58); border-radius: 4px; width: 0; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
+.fi { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--color-border-tertiary); }
+.fi:last-child { border-bottom: none; padding-bottom: 0; }
+.fi-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
+.fi-good { background: #EAF3DE; }
+.fi-warn { background: #FAEEDA; }
+.improve-item { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px; margin-bottom: 10px; border: 1px solid var(--color-border-tertiary); }
+.improve-item:last-child { margin-bottom: 0; }
+.improve-before { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 4px; font-weight: 600; }
+.improve-text { font-size: 13px; color: var(--color-text-primary); line-height: 1.6; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <div class="logo">lu<span>me</span></div>
+    <div class="tagline">AI 뷰티 컨설턴트</div>
+  </div>
+
+  <div class="step-nav">
+    <div class="snav active" id="nav1"><div class="snav-circle">1</div><div class="snav-label">얼굴 분석</div></div>
+    <div class="snav-line"></div>
+    <div class="snav" id="nav2"><div class="snav-circle">2</div><div class="snav-label">헤어</div></div>
+    <div class="snav-line"></div>
+    <div class="snav" id="nav3"><div class="snav-circle">3</div><div class="snav-label">메이크업</div></div>
+  </div>
+
+  <div class="err-box" id="err-box"></div>
+
+  <div class="gender-wrap" id="screen-gender">
+    <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-point);font-weight:700;margin-bottom:8px;">lume</div>
+    <div class="gender-title">안녕하세요 👋</div>
+    <div class="gender-sub">성별을 선택하면 해당 성별 평균과 비교해서 정확한 분석을 드려요.</div>
+    <div class="gender-btns">
+      <button class="g-btn" onclick="selectGender('female', this)">
+        <div class="g-icon"><i class="ti ti-woman"></i></div>
+        <div class="g-label">여성</div>
+      </button>
+      <button class="g-btn" onclick="selectGender('male', this)">
+        <div class="g-icon"><i class="ti ti-man"></i></div>
+        <div class="g-label">남성</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="screen" id="screen-upload">
+    <div class="card">
+      <div class="sec-label">Step 1 · 얼굴 분석</div>
+      <div class="card-title">생얼 사진을 올려주세요</div>
+      <div class="card-body">AI가 얼굴형·안면 비율·피부톤·이목구비를 분석해드려요.</div>
+    </div>
+    <img id="preview" class="preview-img" alt="미리보기">
+    <div class="upload-box" id="upload-box">
+      <input type="file" accept="image/*" id="file-input">
+      <i class="ti ti-camera" style="font-size:32px;color:var(--color-point);display:block;margin-bottom:8px;"></i>
+      <div style="font-size:15px;font-weight:600;color:#1a1a1a;margin-bottom:4px;">사진 업로드</div>
+      <div style="font-size:13px;color:#666;">정면 생얼 사진 권장</div>
+    </div>
+    <div class="guide-box">
+      <div class="guide-row"><i class="ti ti-check" style="color:#639922;font-size:16px;"></i> 자연광, 정면, 무표정</div>
+      <div class="guide-row"><i class="ti ti-check" style="color:#639922;font-size:16px;"></i> 머리카락 귀 뒤로 넘기기</div>
+      <div class="guide-row"><i class="ti ti-x" style="color:#E24B4A;font-size:16px;"></i> 마스크·선글라스 불가</div>
+    </div>
+    <button class="cta-btn" id="start-btn" disabled onclick="startAnalysis()">분석 시작</button>
+  </div>
+
+  <div class="loading-wrap" id="loading1">
+    <div class="spinner"></div>
+    <div class="l-msg" id="l1msg">얼굴 분석 중...</div>
+    <div class="l-sub" id="l1sub">잠시만 기다려주세요</div>
+  </div>
+
+  <div id="result-wrap" style="display:none;">
+    <div class="report-tabs">
+      <div class="rtab active" onclick="switchTab('face',this)">얼굴 분석</div>
+      <div class="rtab" onclick="switchTab('hair',this)">헤어</div>
+      <div class="rtab" onclick="switchTab('makeup',this)">메이크업</div>
+    </div>
+
+    <div class="tab-panel active" id="tab-face">
+      <div class="card reveal">
+        <div class="sec-label">얼굴형</div>
+        <div class="card-title" id="r-face-shape">—</div>
+        <div class="card-body" id="r-summary"></div>
+      </div>
+      
+      <div class="card reveal">
+        <div class="sec-label">안면 3등분 비율 (세로)</div>
+        <div class="card-body" style="margin-bottom:14px; font-weight: 500;">상안부(이마) : 중안부(눈~코) : 하안부(코~턱)</div>
+        <div class="ratio-visual">
+          <div class="ratio-face" id="ratio-face">
+            <div class="ratio-seg" id="seg-top" style="background:#7F77DD;flex:33;">상</div>
+            <div class="ratio-seg" id="seg-mid" style="background:var(--color-point);flex:33;">중</div>
+            <div class="ratio-seg" id="seg-bot" style="background:#1D9E75;flex:34;">하</div>
+          </div>
+          <div class="ratio-labels" id="ratio-labels"></div>
+        </div>
+        <div class="legend">
+          <div class="leg"><div class="leg-dot" style="background:#639922;"></div>평균보다 좋음</div>
+          <div class="leg"><div class="leg-dot" style="background:#888;"></div>평균 수준</div>
+          <div class="leg"><div class="leg-dot" style="background:#E24B4A;"></div>평균보다 낮음</div>
+          <div class="leg"><div class="leg-dot" style="background:var(--color-point);"></div><span id="avg-lbl1">여성 평균</span></div>
+          <div class="leg"><div class="leg-dot" style="background:#378ADD;opacity:0.8;"></div>황금비율</div>
+        </div>
+        <div id="bars-ratio"></div>
+      </div>
+
+      <div class="card reveal">
+        <div class="sec-label">얼굴 너비 비율 (가로)</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-dot" style="background:#639922;"></div>평균보다 넓음</div>
+          <div class="leg"><div class="leg-dot" style="background:#888;"></div>평균 수준</div>
+          <div class="leg"><div class="leg-dot" style="background:#E24B4A;"></div>평균보다 좁음</div>
+          <div class="leg"><div class="leg-dot" style="background:var(--color-point);"></div><span id="avg-lbl2">여성 평균</span></div>
+        </div>
+        <div id="bars-width"></div>
+      </div>
+
+      <div class="card reveal">
+        <div class="sec-label">피부톤</div>
+        <div class="card-title" id="r-skin-tone">—</div>
+        <div class="card-body" id="r-skin-desc"></div>
+        <div class="tone-grid" id="tone-grid">
+          <div class="tone-item"><div class="tone-swatch" style="background:#F2D8CE;"></div><div class="tone-info"><div class="tone-cat">베이스</div><div class="tone-name">핑크 베이지</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>에스쁘아 N13</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>헤라 블랙쿠션 #21P</div></div></div>
+          <div class="tone-item"><div class="tone-swatch" style="background:#D9969B;"></div><div class="tone-info"><div class="tone-cat">블러셔</div><div class="tone-name">쿨 로즈 핑크</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>롬앤 퍼지 #05</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>NARS Orgasm</div></div></div>
+          <div class="tone-item"><div class="tone-swatch" style="background:#B85C6A;"></div><div class="tone-info"><div class="tone-cat">립</div><div class="tone-name">쿨 로즈 버건디</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>롬앤 제로벨벳 #09</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>3CE 벨벳틴트</div></div></div>
+          <div class="tone-item"><div class="tone-swatch" style="background:#8A6B72;"></div><div class="tone-info"><div class="tone-cat">아이섀도우</div><div class="tone-name">쿨 모브 로즈</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>어반디케이 Naked3</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>클리오 #02 Rose</div></div></div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="sec-label">이목구비 특징</div>
+        <div class="legend" style="margin-bottom:8px;">
+          <div class="leg"><div class="leg-dot" style="background:#639922;"></div>평균보다 좋음</div>
+          <div class="leg"><div class="leg-dot" style="background:#888;"></div>평균 수준</div>
+          <div class="leg"><div class="leg-dot" style="background:#E24B4A;"></div>보완 필요</div>
+        </div>
+        <div class="group-title">눈</div>
+        <div class="feature-grid">
+          <div class="feat-card feat-good"><i class="ti ti-eye feat-icon"></i><div class="feat-title">눈 크기</div><div class="feat-sub">보통~큰 편, 강조 메이크업 효과 좋음</div></div>
+          <div class="feat-card feat-good"><i class="ti ti-arrows-left-right feat-icon"></i><div class="feat-title">눈 간격</div><div class="feat-sub">적당한 간격, 균형 잡힌 인상</div></div>
+          <div class="feat-card feat-warn" id="feat-eyelid"><i class="ti ti-eye-closed feat-icon"></i><div class="feat-title" id="feat-eyelid-title">홑꺼풀</div><div class="feat-sub" id="feat-eyelid-sub">음영 섀도우·점막 라이너 필수</div></div>
+          <div class="feat-card feat-warn"><i class="ti ti-ripple feat-icon"></i><div class="feat-title">눈두덩이 살</div><div class="feat-sub">매트 브라운으로 음영 필수</div></div>
+          <div class="feat-card feat-neu"><i class="ti ti-trending-up feat-icon"></i><div class="feat-title">눈꼬리 방향</div><div class="feat-sub">수평형, 살짝 올려 그리면 또렷</div></div>
+          <div class="feat-card feat-warn"><i class="ti ti-border-bottom feat-icon"></i><div class="feat-title">애굣살</div><div class="feat-sub">뚜렷한 편, 언더라인 최소화</div></div>
+        </div>
+        <div class="group-title">눈썹</div>
+        <div class="feature-grid">
+          <div class="feat-card feat-warn"><i class="ti ti-pencil feat-icon"></i><div class="feat-title">눈썹 형태</div><div class="feat-sub">흐릿함, 일자형으로 또렷하게</div></div>
+          <div class="feat-card feat-warn"><i class="ti ti-arrow-bar-right feat-icon"></i><div class="feat-title">눈썹 길이</div><div class="feat-sub">짧은 편, 길이 확보 필요</div></div>
+        </div>
+        <div class="group-title">코 · 입술</div>
+        <div class="feature-grid">
+          <div class="feat-card feat-neu"><i class="ti ti-arrow-bar-down feat-icon"></i><div class="feat-title">콧대</div><div class="feat-sub">보통, 쉐딩으로 입체감 추가</div></div>
+          <div class="feat-card feat-neu"><i class="ti ti-space feat-icon"></i><div class="feat-title">인중 길이</div><div class="feat-sub">보통 수준</div></div>
+          <div class="feat-card feat-good"><i class="ti ti-rosette feat-icon"></i><div class="feat-title">입술 볼륨</div><div class="feat-sub">도톰한 편, 립 메이크업 효과 좋음</div></div>
+          <div class="feat-card feat-neu"><i class="ti ti-bow feat-icon"></i><div class="feat-title">입술 모양</div><div class="feat-sub">균형 잡힌 편</div></div>
+        </div>
+        <div class="group-title">얼굴형</div>
+        <div class="feature-grid">
+          <div class="feat-card feat-good"><i class="ti ti-oval feat-icon"></i><div class="feat-title">얼굴형</div><div class="feat-sub">계란형에 가까워 다양한 스타일 가능</div></div>
+          <div class="feat-card feat-good"><i class="ti ti-sparkles feat-icon"></i><div class="feat-title">피부결</div><div class="feat-sub">깨끗하고 밝음</div></div>
+          <div class="feat-card feat-warn"><i class="ti ti-arrows-horizontal feat-icon"></i><div class="feat-title">볼 살</div><div class="feat-sub">있는 편, 쉐딩+블러셔로 보정</div></div>
+          <div class="feat-card feat-good"><i class="ti ti-rectangle feat-icon"></i><div class="feat-title">이마</div><div class="feat-sub">넓고 깨끗, 이마 오픈도 잘 어울림</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-hair">
+      <div class="card reveal">
+        <div class="sec-label">헤어 컨설팅</div>
+        <div class="card-title">세로 길이감이 핵심이에요</div>
+        <div class="card-body">얼굴 옆을 좁히고 위로 길어 보이게 만드는 헤어가 포인트예요.</div>
+      </div>
+      <div class="card reveal">
+        <div class="sec-label">추천 스타일</div>
+        <div class="hair-item"><span class="hair-badge badge-good">1순위 강추</span><div class="hair-name">레이어드 미디엄 (쇄골 기장)</div><div class="hair-desc">끝에 레이어를 넣어 볼 옆을 자연스럽게 커버. C컬이나 S컬 펌을 더하면 효과 두 배예요.</div></div>
+        <div class="hair-item"><span class="hair-badge badge-good">2순위 추천</span><div class="hair-name">히피펌 / 내추럴 웨이브</div><div class="hair-desc">자연스러운 웨이브로 세로 길이감 UP. 볼 살 있는 얼굴에 잘 어울려요.</div></div>
+        <div class="hair-item"><span class="hair-badge badge-good">3순위 추천</span><div class="hair-name">롱 밥 C컬 (턱선 아래 5cm)</div><div class="hair-desc">C컬로 끝을 안으로 말아주면 볼 살을 자연스럽게 가려줘요.</div></div>
+        <div class="hair-item"><span class="hair-badge badge-warn">비추천</span><div class="hair-name">턱선 딱 맞는 단발 밥</div><div class="hair-desc">턱선을 강조해 얼굴이 더 넓어 보여요.</div></div>
+      </div>
+      <div class="card reveal">
+        <div class="sec-label">앞머리 & 볼륨</div>
+        <div class="pills">
+          <span class="pill pill-good">✓ 이마 오픈 OK</span>
+          <span class="pill pill-good">✓ 사이드 뱅</span>
+          <span class="pill pill-good">✓ 시스루 뱅</span>
+          <span class="pill pill-good">✓ 정수리 볼륨</span>
+          <span class="pill pill-warn">✗ 일자 두꺼운 뱅</span>
+          <span class="pill pill-warn">✗ 사이드 볼륨</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-makeup">
+      <div id="makeup-upload-section">
+        <div class="card">
+          <div class="sec-label">Step 3 · 메이크업 피드백</div>
+          <div class="card-title">화장한 사진을 올려주세요</div>
+          <div class="card-body">AI가 잘된 점·보완할 점·개선 방법을 알려드려요.</div>
+        </div>
+        <img id="makeup-preview" class="preview-img" alt="메이크업 미리보기">
+        <div class="upload-box" id="makeup-upload-box">
+          <input type="file" accept="image/*" id="makeup-input">
+          <i class="ti ti-camera" style="font-size:32px;color:var(--color-point);display:block;margin-bottom:8px;"></i>
+          <div style="font-size:15px;font-weight:600;color:#1a1a1a;margin-bottom:4px;">화장한 사진 업로드</div>
+          <div style="font-size:13px;color:#666;">정면 사진 권장</div>
+        </div>
+        <button class="cta-btn" id="makeup-btn" disabled onclick="startMakeupAnalysis()">메이크업 분석하기</button>
+      </div>
+      <div class="loading-wrap" id="loading3">
+        <div class="spinner"></div>
+        <div class="l-msg" id="l3msg">메이크업 분석 중...</div>
+        <div class="l-sub" id="l3sub">잠시만 기다려주세요</div>
+      </div>
+      <div id="makeup-result" style="display:none;">
+        <div class="card reveal">
+          <div class="sec-label">전체 평가</div>
+          <div class="score-row">
+            <div class="score-num" id="r3score">—</div>
+            <div style="flex:1;"><div class="score-bar"><div class="score-fill" id="r3fill"></div></div><div style="font-size:13px;color:#666;margin-top:8px;line-height:1.4;" id="r3comment"></div></div>
+          </div>
+        </div>
+        <div class="card reveal"><div class="sec-label">잘 된 점</div><div id="r3good"></div></div>
+        <div class="card reveal"><div class="sec-label">보완할 점</div><div id="r3warn"></div></div>
+        <div class="card reveal"><div class="sec-label">이렇게 바꿔보세요</div><div id="r3improve"></div></div>
+        <button class="ghost-btn" onclick="retakeMakeup()">다른 사진으로 다시 분석</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let gender = 'female';
+let uploadedFile = null;
+let makeupFile = null;
+
+const avgData = {
+  female: { ratio: { top:34,mid:33,bot:33 }, width: {'이마 너비':65,'광대 너비':68,'턱선 너비':56,'얼굴 길이 비율':58} },
+  male:   { ratio: { top:33,mid:34,bot:33 }, width: {'이마 너비':70,'광대 너비':74,'턱선 너비':68,'얼굴 길이 비율':63} }
+};
+
+let myData = {
+  ratio: { top:33, mid:33, bot:34 },
+  width: { '이마 너비':{v:65,l:'보통'}, '광대 너비':{v:68,l:'보통'}, '턱선 너비':{v:52,l:'좁음'}, '얼굴 길이 비율':{v:58,l:'보통'} }
+};
+
+function showErr(msg) {
+  const el = document.getElementById('err-box');
+  el.textContent = '⚠️ ' + msg;
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 8000);
+}
+
+function selectGender(g, el) {
+  gender = g;
+  document.querySelectorAll('.g-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  setTimeout(() => {
+    document.getElementById('screen-gender').style.display = 'none';
+    document.getElementById('screen-upload').classList.add('active');
+  }, 180);
+}
+
+document.getElementById('file-input').addEventListener('change', function() {
+  if (!this.files || !this.files[0]) return;
+  uploadedFile = this.files[0];
+  const prev = document.getElementById('preview');
+  prev.src = URL.createObjectURL(uploadedFile);
+  prev.style.display = 'block';
+  document.getElementById('upload-box').style.display = 'none';
+  document.getElementById('start-btn').disabled = false;
+});
+
+document.getElementById('makeup-input').addEventListener('change', function() {
+  if (!this.files || !this.files[0]) return;
+  makeupFile = this.files[0];
+  const prev = document.getElementById('makeup-preview');
+  prev.src = URL.createObjectURL(makeupFile);
+  prev.style.display = 'block';
+  document.getElementById('makeup-upload-box').style.display = 'none';
+  document.getElementById('makeup-btn').disabled = false;
+});
+
+function setNav(n, state) {
+  const el = document.getElementById('nav' + n);
+  el.className = 'snav ' + state;
+  el.querySelector('.snav-circle').textContent = state === 'done' ? '✓' : n;
+}
+
+const spyScroll = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.05 });
+
+function initScrollAnimation() {
+  document.querySelectorAll('.reveal').forEach(el => {
+    spyScroll.observe(el);
+  });
+}
+
+async function startAnalysis() {
+  document.getElementById('screen-upload').classList.remove('active');
+  document.getElementById('loading1').style.display = 'block';
+  setNav(1, 'active');
+
+  const msgs = [['얼굴 윤곽 인식 중...','이목구비 위치 파악 중'],['피부톤 분석 중...','안면 비율 측정 중'],['리포트 생성 중...','거의 다 됐어요']];
+  let si = 0;
+  const lt = setInterval(() => {
+    const s = msgs[Math.min(si++, msgs.length-1)];
+    document.getElementById('l1msg').textContent = s[0];
+    document.getElementById('l1sub').textContent = s[1];
+  }, 1100);
+
+  try {
+    await new Promise(r => setTimeout(r, 2500));
+    const d = {
+      face_shape: '계란형',
+      summary: '전체적으로 균형 잡힌 얼굴형이에요. 이마가 넓고 턱선이 부드럽게 좁아지는 이상적인 비율을 가졌어요.',
+      skin_tone: '웜 베이지',
+      skin_desc: '황기가 살짝 도는 따뜻한 베이지 톤이에요. 웜 컬러 메이크업이 잘 어울려요.',
+      eye_type: '속쌍꺼풀',
+      ratio: { top: 34, mid: 33, bot: 33 },
+      width: {
+        forehead: { value: 67, label: '보통' },
+        cheekbone: { value: 70, label: '보통' },
+        jawline: { value: 54, label: '좁음' },
+        length_ratio: { value: 60, label: '보통' }
+      }
+    };
+
+    if (d.ratio) myData.ratio = d.ratio;
+    if (d.width) myData.width = {
+      '이마 너비': { v: d.width.forehead?.value || 65, l: d.width.forehead?.label || '보통' },
+      '광대 너비': { v: d.width.cheekbone?.value || 68, l: d.width.cheekbone?.label || '보통' },
+      '턱선 너비': { v: d.width.jawline?.value || 52, l: d.width.jawline?.label || '좁음' },
+      '얼굴 길이 비율': { v: d.width.length_ratio?.value || 58, l: d.width.length_ratio?.label || '보통' }
+    };
+
+    clearInterval(lt);
+    document.getElementById('loading1').style.display = 'none';
+    document.getElementById('result-wrap').style.display = 'block';
+    setNav(1, 'done');
+
+    document.getElementById('r-face-shape').textContent = d.face_shape || '—';
+    document.getElementById('r-summary').textContent = d.summary || '';
+    document.getElementById('r-skin-tone').textContent = d.skin_tone || '—';
+    document.getElementById('r-skin-desc').textContent = d.skin_desc || '';
+    if (d.eye_type) {
+      document.getElementById('feat-eyelid-title').textContent = d.eye_type;
+    }
+
+    renderRatio();
+    renderWidth();
+    initScrollAnimation();
+
+  } catch(e) {
+    clearInterval(lt);
+    document.getElementById('loading1').style.display = 'none';
+    document.getElementById('screen-upload').classList.add('active');
+    showErr(e.message);
+  }
+}
+
+function classify(v, avg, tol) {
+  return v - avg > tol ? 'above' : v - avg < -tol ? 'below' : 'avg';
+}
+
+function renderRatio() {
+  const r = myData.ratio;
+  const avgs = avgData[gender].ratio;
+  const gLabel = gender === 'female' ? '여성' : '남성';
+
+  document.getElementById('seg-top').style.flex = r.top;
+  document.getElementById('seg-mid').style.flex = r.mid;
+  document.getElementById('seg-bot').style.flex = r.bot;
+
+  const items = [
+    { key:'top', name:'상안부 (이마)', avg:avgs.top, color:'#7F77DD' },
+    { key:'mid', name:'중안부 (눈~코)', avg:avgs.mid, color: 'var(--color-point)' },
+    { key:'bot', name:'하안부 (코~턱)', avg:avgs.bot, color:'#1D9E75' }
+  ];
+
+  document.getElementById('ratio-labels').innerHTML = items.map(l => {
+    const myV = r[l.key];
+    const cls = classify(myV, l.avg, 1.5);
+    const diffStr = cls==='above' ? `<span style="color:#639922; font-weight:600;">▲ 평균+${(myV-l.avg).toFixed(1)}%</span>`
+                  : cls==='below' ? `<span style="color:#E24B4A; font-weight:600;">▼ 평균${(myV-l.avg).toFixed(1)}%</span>`
+                  : `<span style="color:#888; font-weight:600;">≈ 평균 수준</span>`;
+    return `<div class="ratio-label-item"><div class="ratio-dot" style="background:${l.color};"></div><div><div class="ratio-main">${l.name} — ${myV}%</div><div class="ratio-sub">${gLabel} 평균 ${l.avg}% · ${diffStr}</div></div></div>`;
+  }).join('');
+
+  document.getElementById('avg-lbl1').textContent = gLabel + ' 평균';
+
+  document.getElementById('bars-ratio').innerHTML = items.map(l => {
+    const myV = r[l.key];
+    const cls = classify(myV, l.avg, 1.5);
+    const scale = v => Math.max(0, Math.min(100, ((v-20)/30*100))).toFixed(1);
+    const myW = scale(myV), avgW = scale(l.avg), gldW = scale(33.3);
+    const fillCls = cls==='above'?'fill-above':cls==='below'?'fill-below':'fill-avg';
+    const valCls  = cls==='above'?'val-above' :cls==='below'?'val-below' :'val-avg';
+    const status  = cls==='above'?'평균보다 높음':cls==='below'?'평균보다 낮음':'평균 수준';
+    return `<div class="bar-section">
+      <div class="bar-label-row"><span class="bar-name">${l.name} 비율</span><span class="bar-value ${valCls}">${myV}%</span></div>
+      <div class="bar-wrap">
+        <div class="bar-fill ${fillCls}" data-w="${myW}" style="width:0%;"></div>
+        <div class="avg-mark" style="left:${avgW}%;"><div class="avg-mark-line"></div><div class="avg-mark-label">${gLabel} ${l.avg}%</div></div>
+        <div class="golden-mark" style="left:${gldW}%;"><div class="golden-mark-line"></div><div class="golden-mark-label">황금 33.3%</div></div>
+      </div>
+      <div class="bar-desc">${status} · 내 수치 ${myV}%</div>
+    </div>`;
+  }).join('');
+
+  setTimeout(() => animateBars('bars-ratio'), 200);
+}
+
+function renderWidth() {
+  const avgs = avgData[gender].width;
+  const gLabel = gender === 'female' ? '여성' : '남성';
+  document.getElementById('avg-lbl2').textContent = gLabel + ' 평균';
+
+  document.getElementById('bars-width').innerHTML = Object.entries(myData.width).map(([name, my]) => {
+    const avg = avgs[name];
+    const cls = classify(my.v, avg, 4);
+    const fillCls = cls==='above'?'fill-above':cls==='below'?'fill-below':'fill-avg';
+    const valCls  = cls==='above'?'val-above' :cls==='below'?'val-below' :'val-avg';
+    const status  = cls==='above'?'평균보다 넓음':cls==='below'?'평균보다 좁음':'평균 수준';
+    return `<div class="bar-section">
+      <div class="bar-label-row"><span class="bar-name">${name}</span><span class="bar-value ${valCls}">${my.l}</span></div>
+      <div class="bar-wrap">
+        <div class="bar-fill ${fillCls}" data-w="${my.v}" style="width:0%;"></div>
+        <div class="avg-mark" style="left:${avg}%;"><div class="avg-mark-line"></div><div class="avg-mark-label">${gLabel} 평균</div></div>
+      </div>
+      <div class="bar-desc">${status} · 내 수치 ${my.v} vs ${gLabel} 평균 ${avg}</div>
+    </div>`;
+  }).join('');
+
+  setTimeout(() => animateBars('bars-width'), 200);
+}
+
+function animateBars(id) {
+  document.getElementById(id).querySelectorAll('[data-w]').forEach(el => el.style.width = el.dataset.w + '%');
+}
+
+function switchTab(id, el) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.rtab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  el.classList.add('active');
+  initScrollAnimation();
+}
+
+async function startMakeupAnalysis() {
+  document.getElementById('makeup-upload-section').style.display = 'none';
+  document.getElementById('loading3').style.display = 'block';
+
+  const msgs = [['메이크업 구성 분석 중...','베이스·눈·입술 파악 중'],['잘된 점 / 보완점 도출 중...','거의 다 됐어요']];
+  let si = 0;
+  const lt = setInterval(() => {
+    const s = msgs[Math.min(si++, msgs.length-1)];
+    document.getElementById('l3msg').textContent = s[0];
+    document.getElementById('l3sub').textContent = s[1];
+  }, 1200);
+
+  try {
+    await new Promise(r => setTimeout(r, 2500));
+    const s = {
+      score: 78,
+      score_comment: '전체적으로 깔끔하고 자연스러운 메이크업이에요. 눈 메이크업을 조금만 보완하면 훨씬 또렷한 인상을 줄 수 있어요.',
+      good: [
+        { title: '베이스 메이크업', desc: '피부 표현이 자연스럽고 들뜸 없이 밀착되어 있어요.' },
+        { title: '립 컬러', desc: '입술 색이 피부톤과 잘 어울려 생기 있어 보여요.' },
+        { title: '전체 밸런스', desc: '너무 과하지 않고 데일리로 완성도 높은 메이크업이에요.' }
+      ],
+      warn: [
+        { title: '눈썹 라인', desc: '눈썹이 전체적으로 흐려서 인상이 약해 보여요.' },
+        { title: '눈 음영', desc: '눈두덩이 음영이 없어 눈이 답답해 보일 수 있어요.' },
+        { title: '언더라인', desc: '애굣살이 있는 편이라 언더라인이 더해지면 무거워 보여요.' }
+      ],
+      improve: [
+        { before: '흐린 눈썹', text: '카키 브라운 계열로 일자형에 가깝게 결을 채워주면 또렷한 인상이 돼요.' },
+        { before: '음영 없는 눈', text: '매트 브라운 섀도우로 쌍꺼풀 라인에 살짝 음영을 넣어주세요.' },
+        { before: '밋밋한 얼굴 윤곽', text: '광대 아래 쉐딩을 살짝 더하면 얼굴이 훨씬 갸름해 보여요.' }
+      ]
+    };
+
+    clearInterval(lt);
+    document.getElementById('loading3').style.display = 'none';
+    document.getElementById('makeup-result').style.display = 'block';
+    setNav(3, 'done');
+
+    document.getElementById('r3score').textContent = s.score;
+    document.getElementById('r3comment').textContent = s.score_comment;
+    setTimeout(() => { document.getElementById('r3fill').style.width = s.score + '%'; }, 200);
+    document.getElementById('r3good').innerHTML = (s.good||[]).map(g => `<div class="fi"><div class="fi-icon fi-good"><i class="ti ti-check" style="color:#3B6D11;font-size:13px;"></i></div><div><div class="fi-title">${g.title}</div><div class="fi-desc">${g.desc}</div></div></div>`).join('');
+    document.getElementById('r3warn').innerHTML = (s.warn||[]).map(w => `<div class="fi"><div class="fi-icon fi-warn"><i class="ti ti-alert-triangle" style="color:#BA7517;font-size:13px;"></i></div><div><div class="fi-title">${w.title}</div><div class="fi-desc">${w.desc}</div></div></div>`).join('');
+    document.getElementById('r3improve').innerHTML = (s.improve||[]).map(i => `<div class="improve-item"><div class="improve-before">현재 → ${i.before}</div><div class="improve-text">${i.text}</div></div>`).join('');
+
+    initScrollAnimation();
+
+  } catch(e) {
+    clearInterval(lt);
+    document.getElementById('loading3').style.display = 'none';
+    document.getElementById('makeup-upload-section').style.display = 'block';
+    showErr(e.message);
+  }
+}
+
+function retakeMakeup() {
+  makeupFile = null;
+  document.getElementById('makeup-result').style.display = 'none';
+  document.getElementById('makeup-preview').style.display = 'none';
+  document.getElementById('makeup-upload-box').style.display = 'block';
+  document.getElementById('makeup-btn').disabled = true;
+  document.getElementById('makeup-input').value = '';
+  document.getElementById('makeup-upload-section').style.display = 'block';
+}
+</script>
+</body>
+</html>
