@@ -22,25 +22,24 @@
   --border-radius-md: 14px;
 }
 
-/* 💻 PC와 모바일 모두에서 완벽한 레이아웃을 잡아주는 설정 */
 body { 
-  background: #e5e5ea; /* PC 배경은 살짝 어두운 톤으로 감싸줌 */
+  background: #e5e5ea; 
   font-family: var(--font-sans); 
   min-height: 100vh; 
   -webkit-font-smoothing: antialiased; 
   display: flex;
-  justify-content: center; /* 화면 정중앙 배치 */
+  justify-content: center; 
   align-items: flex-start;
 }
 
 .app { 
   width: 100%;
-  max-width: 480px; /* 스마트폰 가로 사이즈 고정 */
+  max-width: 480px; 
   margin: 0 auto; 
   background: var(--color-background-primary); 
   min-height: 100vh; 
   padding-bottom: 4rem; 
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.08); /* 양옆을 고급스럽게 띄워주는 그림자 */
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.08); 
 }
 
 /* 스크롤 애니메이션 효과 */
@@ -110,4 +109,17 @@ body {
 }
 .sec-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-point); font-weight: 700; margin-bottom: 8px; }
 .card-title { font-size: 19px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 8px; letter-spacing: -0.02em; }
-.card-body { font-size: 14px; color: var(--color-text-secondary); line-height
+.card-body { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; }
+.divider { height: 1px; background: var(--color-border-tertiary); margin: 16px 0; }
+.cta-btn { width: 100%; padding: 16px; background: var(--color-point); color: white; border: none; border-radius: var(--border-radius-lg); font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 12px; transition: all 0.2s; box-shadow: 0 4px 12px rgba(200, 149, 108, 0.2); }
+.cta-btn:hover { background: #B87E58; transform: translateY(-1px); }
+.cta-btn:disabled { background: var(--color-border-secondary); cursor: not-allowed; box-shadow: none; transform: none; }
+.ghost-btn { width: 100%; padding: 13px; background: transparent; color: var(--color-text-secondary); border: 1px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); font-size: 14px; font-weight: 500; cursor: pointer; margin-top: 8px; transition: all 0.2s; }
+.ghost-btn:hover { background: var(--color-background-secondary); }
+
+/* 성별 선택 */
+.gender-wrap { padding: 2.5rem 1.25rem 0; width: 100%; }
+.gender-title { font-size: 22px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 8px; letter-spacing: -0.02em; }
+.gender-sub { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 28px; line-height: 1.6; }
+.gender-btns { display: flex; gap: 14px; }
+.g-btn { flex: 1; padding: 28px 14px; border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); background: white; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); text-align: center; box-shadow: var(--card-shadow);
