@@ -1,781 +1,113 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
-</head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="ko"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1">&lt;title&gt;lume · AI 뷰티 컨설턴트&lt;/title&gt;</p>
-<p class="p1">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"&gt;</p>
-<p class="p1">&lt;style&gt;</p>
-<p class="p1">* { box-sizing: border-box; margin: 0; padding: 0; }</p>
-<p class="p1">:root {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>--color-text-primary: #1c1c1e;<span class="Apple-converted-space">      </span>/* 조금 더 깊고 고급스러운 블랙 */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>--color-text-secondary: #76767f;<span class="Apple-converted-space">    </span>/* 가독성이 좋은 서브 텍스트 그레이 */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>--color-background-primary: #ffffff;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>--color-background-secondary: #f9f9fb; /* 맑고 세련된 그레이 */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>--color-border-tertiary: #f2f2f7; <span class="Apple-converted-space">  </span>/* 부드러운 경계선 */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>--color-border-secondary: #e5e5ea;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>--color-point: #C8956C; <span class="Apple-converted-space">            </span>/* Lume 메인 브랜드 컬러 */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>--color-point-bg: #fdf8f4;<span class="Apple-converted-space">          </span>/* 메인 컬러 배경용 틴트 */</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* 고급스러운 카드 섀도우 */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>--card-shadow: 0 8px 24px rgba(28, 28, 30, 0.04), 0 1px 2px rgba(28, 28, 30, 0.02);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>--font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>--border-radius-lg: 20px; <span class="Apple-converted-space">          </span>/* 곡률을 조금 더 둥글게 하여 트렌디함 강조 */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>--border-radius-md: 14px;</p>
-<p class="p1">}</p>
-<p class="p1">body {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>background: #f2f2f7;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>font-family: var(--font-sans);<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>min-height: 100vh;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>-webkit-font-smoothing: antialiased;<span class="Apple-converted-space"> </span></p>
-<p class="p1">}</p>
-<p class="p1">.app {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>max-width: 480px;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>margin: 0 auto;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>background: var(--color-background-primary);<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>min-height: 100vh;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>padding-bottom: 4rem;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>box-shadow: 0 0 50px rgba(0,0,0,0.05);<span class="Apple-converted-space"> </span></p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* 스크롤 애니메이션 (Fade-in Up) */</p>
-<p class="p1">.reveal {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>opacity: 0;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>transform: translateY(25px);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>transition: opacity 0.7s cubic-bezier(0.215, 0.610, 0.355, 1),<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">              </span>transform 0.7s cubic-bezier(0.215, 0.610, 0.355, 1);</p>
-<p class="p1">}</p>
-<p class="p1">.reveal.active {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>opacity: 1;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>transform: translateY(0);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">/* 헤더 */</p>
-<p class="p1">.header { text-align: center; padding: 1.25rem 1rem 1rem; border-bottom: 0.5px solid var(--color-border-tertiary); position: sticky; top: 0; background: white; z-index: 10; }</p>
-<p class="p1">.logo { font-size: 22px; font-weight: 600; letter-spacing: 0.08em; color: #1a1a1a; }</p>
-<p class="p1">.logo span { color: var(--color-point); }</p>
-<p class="p1">.tagline { font-size: 11px; color: var(--color-text-secondary); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; font-weight: 500; }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 스텝 네비 */</p>
-<p class="p1">.step-nav {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>display: flex;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>align-items: center;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>padding: 1.25rem 1.5rem;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>background: var(--color-background-secondary);<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>border-bottom: 1px solid var(--color-border-tertiary);</p>
-<p class="p1">}</p>
-<p class="p1">.snav { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; opacity: 0.35; transition: all 0.3s; }</p>
-<p class="p1">.snav.active { opacity: 1; }</p>
-<p class="p1">.snav.done { opacity: 0.9; }</p>
-<p class="p1">.snav-circle {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>width: 32px;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>height: 32px;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>border-radius: 50%;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>border: 1.5px solid var(--color-border-secondary);<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>display: flex;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>align-items: center;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>justify-content: center;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>font-size: 12px;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>font-weight: 600;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>background: white;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>color: var(--color-text-secondary);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>transition: all 0.3s ease;</p>
-<p class="p1">}</p>
-<p class="p1">.snav.active .snav-circle {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>background: var(--color-point);<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>border-color: var(--color-point);<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>color: white;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>box-shadow: 0 4px 12px rgba(200, 149, 108, 0.3);<span class="Apple-converted-space"> </span></p>
-<p class="p1">}</p>
-<p class="p1">.snav.done .snav-circle { background: #EAF3DE; border-color: #C0DD97; color: #3B6D11; font-size: 14px; }</p>
-<p class="p1">.snav-label { font-size: 11px; color: var(--color-text-secondary); text-align: center; font-weight: 500; }</p>
-<p class="p1">.snav.active .snav-label { color: var(--color-point); font-weight: 700; }</p>
-<p class="p1">.snav-line { height: 1px; flex: 0.4; background: var(--color-border-secondary); margin-bottom: 20px; }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 공통 컴포넌트 */</p>
-<p class="p1">.screen { display: none; padding: 1.25rem 1rem 0; }</p>
-<p class="p1">.screen.active { display: block; }</p>
-<p class="p1">.card {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>background: var(--color-background-primary);<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>border: 1px solid var(--color-border-tertiary);<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>border-radius: var(--border-radius-lg);<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>padding: 1.5rem;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>margin-bottom: 18px;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>box-shadow: var(--card-shadow);<span class="Apple-converted-space"> </span></p>
-<p class="p1">}</p>
-<p class="p1">.sec-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-point); font-weight: 700; margin-bottom: 8px; }</p>
-<p class="p1">.card-title { font-size: 19px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 8px; letter-spacing: -0.02em; }</p>
-<p class="p1">.card-body { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; }</p>
-<p class="p1">.divider { height: 1px; background: var(--color-border-tertiary); margin: 16px 0; }</p>
-<p class="p1">.cta-btn { width: 100%; padding: 16px; background: var(--color-point); color: white; border: none; border-radius: var(--border-radius-lg); font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 12px; transition: all 0.2s; box-shadow: 0 4px 12px rgba(200, 149, 108, 0.2); }</p>
-<p class="p1">.cta-btn:hover { background: #B87E58; transform: translateY(-1px); }</p>
-<p class="p1">.cta-btn:disabled { background: var(--color-border-secondary); cursor: not-allowed; box-shadow: none; transform: none; }</p>
-<p class="p1">.ghost-btn { width: 100%; padding: 13px; background: transparent; color: var(--color-text-secondary); border: 1px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); font-size: 14px; font-weight: 500; cursor: pointer; margin-top: 8px; transition: all 0.2s; }</p>
-<p class="p1">.ghost-btn:hover { background: var(--color-background-secondary); }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 성별 선택 */</p>
-<p class="p1">.gender-wrap { padding: 2.5rem 1.25rem 0; }</p>
-<p class="p1">.gender-title { font-size: 22px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 8px; letter-spacing: -0.02em; }</p>
-<p class="p1">.gender-sub { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 28px; line-height: 1.6; }</p>
-<p class="p1">.gender-btns { display: flex; gap: 14px; }</p>
-<p class="p1">.g-btn { flex: 1; padding: 28px 14px; border: 1.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); background: white; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); text-align: center; box-shadow: var(--card-shadow); }</p>
-<p class="p1">.g-btn:hover { border-color: var(--color-point); transform: translateY(-2px); }</p>
-<p class="p1">.g-btn.selected { border-color: var(--color-point); background: var(--color-point-bg); box-shadow: 0 8px 20px rgba(200, 149, 108, 0.15); }</p>
-<p class="p1">.g-icon { font-size: 36px; color: var(--color-point); margin-bottom: 10px; }</p>
-<p class="p1">.g-label { font-size: 16px; font-weight: 600; color: var(--color-text-primary); }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 업로드 영역 */</p>
-<p class="p1">.upload-box { border: 1.5px dashed var(--color-border-secondary); border-radius: var(--border-radius-lg); padding: 2.5rem 1rem; text-align: center; cursor: pointer; position: relative; transition: all 0.2s; background: var(--color-background-secondary); }</p>
-<p class="p1">.upload-box:hover { border-color: var(--color-point); background: white; }</p>
-<p class="p1">.upload-box input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }</p>
-<p class="p1">.preview-img { width: 100%; border-radius: var(--border-radius-lg); max-height: 280px; object-fit: cover; display: none; margin-bottom: 16px; box-shadow: var(--card-shadow); }</p>
-<p class="p1">.guide-box { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1.15rem; margin-top: 14px; border: 1px solid var(--color-border-tertiary); }</p>
-<p class="p1">.guide-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--color-text-primary); margin-bottom: 8px; font-weight: 500; }</p>
-<p class="p1">.guide-row:last-child { margin-bottom: 0; }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 로딩 애니메이션 */</p>
-<p class="p1">.loading-wrap { display: none; text-align: center; padding: 5rem 1.5rem; }</p>
-<p class="p1">.spinner { width: 42px; height: 42px; border: 3px solid #e5e5ea; border-top-color: var(--color-point); border-radius: 50%; animation: spin 0.8s cubic-bezier(0.6, 0.2, 0.1, 1) infinite; margin: 0 auto 1.5rem; }</p>
-<p class="p1">@keyframes spin { to { transform: rotate(360deg); } }</p>
-<p class="p1">.l-msg { font-size: 17px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 6px; }</p>
-<p class="p1">.l-sub { font-size: 13px; color: var(--color-text-secondary); }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 에러 박스 */</p>
-<p class="p1">.err-box { background: #FCEBEB; border: 1px solid #F09595; border-radius: var(--border-radius-md); padding: 12px 14px; margin: 0 1rem 12px; font-size: 13px; color: #791F1F; display: none; line-height: 1.6; }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 상단 결과 탭 */</p>
-<p class="p1">.report-tabs { display: flex; border-bottom: 1px solid var(--color-border-tertiary); background: white; position: sticky; top: 61px; z-index: 9; }</p>
-<p class="p1">.rtab { flex: 1; padding: 14px 4px; text-align: center; font-size: 14px; font-weight: 600; cursor: pointer; color: var(--color-text-secondary); border-bottom: 3px solid transparent; transition: all 0.15s; }</p>
-<p class="p1">.rtab.active { color: var(--color-point); border-bottom-color: var(--color-point); }</p>
-<p class="p1">.tab-panel { display: none; padding: 1.25rem 1rem 0; }</p>
-<p class="p1">.tab-panel.active { display: block; }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 범례 (Legend) */</p>
-<p class="p1">.legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; padding: 4px 0; }</p>
-<p class="p1">.leg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--color-text-secondary); font-weight: 500; }</p>
-<p class="p1">.leg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 고급화된 막대 차트 (Bar Chart) */</p>
-<p class="p1">.bar-section { margin-bottom: 24px; }</p>
-<p class="p1">.bar-section:last-child { margin-bottom: 0; }</p>
-<p class="p1">.bar-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }</p>
-<p class="p1">.bar-name { font-size: 14px; font-weight: 600; color: var(--color-text-primary); }</p>
-<p class="p1">.bar-value { font-size: 12px; font-weight: 700; border-radius: 20px; padding: 3px 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }</p>
-<p class="p1">.val-above { background: #EAF3DE; color: #27500A; }</p>
-<p class="p1">.val-avg { background: var(--color-background-secondary); color: var(--color-text-secondary); border: 0.5px solid var(--color-border-secondary); }</p>
-<p class="p1">.val-below { background: #FCEBEB; color: #791F1F; }</p>
-<p class="p2"><br></p>
-<p class="p1">.bar-wrap { position: relative; height: 14px; background: #eeeef4; border-radius: 7px; overflow: visible; margin-bottom: 24px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.06); }</p>
-<p class="p1">.bar-fill { height: 100%; border-radius: 7px; width: 0; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }</p>
-<p class="p1">.fill-above { background: linear-gradient(90deg, #8bc34a, #639922); }</p>
-<p class="p1">.fill-avg { background: linear-gradient(90deg, #a1a1aa, #71717a); }</p>
-<p class="p1">.fill-below { background: linear-gradient(90deg, #f87171, #e24b4a); }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 평균선 및 황금비율 가이드라인 디자인 고도화 */</p>
-<p class="p1">.avg-mark { position: absolute; top: -4px; display: flex; flex-direction: column; align-items: center; transform: translateX(-50%); z-index: 2; }</p>
-<p class="p1">.avg-mark-line { width: 2px; height: 22px; background: #C8956C; border-radius: 1px; box-shadow: 0 0 4px rgba(200, 149, 108, 0.5); }</p>
-<p class="p1">.avg-mark-label { font-size: 10px; color: #C8956C; white-space: nowrap; margin-top: 4px; font-weight: 700; background: white; padding: 0 2px; }</p>
-<p class="p1">.golden-mark { position: absolute; top: -4px; display: flex; flex-direction: column; align-items: center; transform: translateX(-50%); z-index: 2; }</p>
-<p class="p1">.golden-mark-line { width: 2px; height: 22px; background: #378ADD; border-radius: 1px; opacity: 0.9; box-shadow: 0 0 4px rgba(55, 138, 221, 0.5); }</p>
-<p class="p1">.golden-mark-label { font-size: 10px; color: #378ADD; white-space: nowrap; margin-top: 4px; font-weight: 700; background: white; padding: 0 2px; }</p>
-<p class="p1">.bar-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; margin-top: -12px; font-weight: 400; }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 세로 비율 시각화 (얼굴 레이아웃 블록) */</p>
-<p class="p1">.ratio-visual { display: flex; gap: 18px; margin-bottom: 18px; background: var(--color-background-secondary); padding: 1rem; border-radius: var(--border-radius-md); border: 1px solid var(--color-border-tertiary); }</p>
-<p class="p1">.ratio-face { width: 76px; flex-shrink: 0; display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border-secondary); height: 150px; box-shadow: var(--card-shadow); }</p>
-<p class="p1">.ratio-seg { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.2); transition: flex 0.5s ease; }</p>
-<p class="p1">.ratio-labels { flex: 1; display: flex; flex-direction: column; gap: 10px; justify-content: center; }</p>
-<p class="p1">.ratio-label-item { display: flex; align-items: flex-start; gap: 10px; }</p>
-<p class="p1">.ratio-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }</p>
-<p class="p1">.ratio-main { font-size: 14px; font-weight: 600; color: var(--color-text-primary); }</p>
-<p class="p1">.ratio-sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 이목구비 그리드 */</p>
-<p class="p1">.group-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-secondary); margin: 20px 0 10px; padding-left: 2px; }</p>
-<p class="p1">.group-title:first-child { margin-top: 0; }</p>
-<p class="p1">.feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }</p>
-<p class="p1">.feat-card { border-radius: var(--border-radius-md); padding: 14px 12px; border: 1px solid transparent; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }</p>
-<p class="p1">.feat-good { background: #EAF3DE; border-color: #C0DD97; }</p>
-<p class="p1">.feat-good .feat-title { color: #27500A; }</p>
-<p class="p1">.feat-good .feat-sub { color: #3B6D11; }</p>
-<p class="p1">.feat-good .feat-icon { color: #639922; }</p>
-<p class="p1">.feat-neu { background: var(--color-background-secondary); border-color: var(--color-border-secondary); }</p>
-<p class="p1">.feat-neu .feat-title { color: var(--color-text-primary); }</p>
-<p class="p1">.feat-neu .feat-sub { color: var(--color-text-secondary); }</p>
-<p class="p1">.feat-neu .feat-icon { color: var(--color-text-secondary); }</p>
-<p class="p1">.feat-warn { background: #FCEBEB; border-color: #F09595; }</p>
-<p class="p1">.feat-warn .feat-title { color: #791F1F; }</p>
-<p class="p1">.feat-warn .feat-sub { color: #A32D2D; }</p>
-<p class="p1">.feat-warn .feat-icon { color: #E24B4A; }</p>
-<p class="p1">.feat-icon { font-size: 18px; margin-bottom: 6px; display: block; }</p>
-<p class="p1">.feat-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }</p>
-<p class="p1">.feat-sub { font-size: 12px; line-height: 1.5; }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 피부톤 퍼스널 스와치 */</p>
-<p class="p1">.tone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }</p>
-<p class="p1">.tone-item { border: 1px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); overflow: hidden; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }</p>
-<p class="p1">.tone-swatch { height: 44px; box-shadow: inset 0 -5px 10px rgba(0,0,0,0.03); }</p>
-<p class="p1">.tone-info { padding: 10px 12px; }</p>
-<p class="p1">.tone-cat { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-secondary); margin-bottom: 3px; font-weight: 700; }</p>
-<p class="p1">.tone-name { font-size: 13px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 6px; }</p>
-<p class="p1">.tone-product { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 헤어 추천 리스트 */</p>
-<p class="p1">.hair-item { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px; margin-bottom: 10px; border: 1px solid var(--color-border-tertiary); }</p>
-<p class="p1">.hair-item:last-child { margin-bottom: 0; }</p>
-<p class="p1">.hair-badge { display: inline-block; font-size: 10px; padding: 2px 10px; border-radius: 20px; margin-bottom: 6px; font-weight: 700; letter-spacing: -0.01em; }</p>
-<p class="p1">.badge-good { background: #EAF3DE; color: #27500A; border: 0.5px solid #C0DD97; }</p>
-<p class="p1">.badge-warn { background: #FCEBEB; color: #A32D2D; border: 0.5px solid #F09595; }</p>
-<p class="p1">.hair-name { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 4px; }</p>
-<p class="p1">.hair-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }</p>
-<p class="p1">.pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }</p>
-<p class="p1">.pill { padding: 5px 12px; border-radius: 30px; font-size: 13px; font-weight: 500; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }</p>
-<p class="p1">.pill-good { background: #EAF3DE; color: #27500A; border: 0.5px solid #C0DD97; }</p>
-<p class="p1">.pill-warn { background: #FCEBEB; color: #A32D2D; border: 0.5px solid #F09595; }</p>
-<p class="p2"><br></p>
-<p class="p1">/* 메이크업 피드백 스코어 */</p>
-<p class="p1">.score-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }</p>
-<p class="p1">.score-num { font-size: 44px; font-weight: 700; color: var(--color-text-primary); line-height: 1; letter-spacing: -0.03em; }</p>
-<p class="p1">.score-bar { height: 8px; background: #eeeef4; border-radius: 4px; overflow: hidden; flex: 1; box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); }</p>
-<p class="p1">.score-fill { height: 100%; background: linear-gradient(90deg, var(--color-point), #b87e58); border-radius: 4px; width: 0; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1); }</p>
-<p class="p1">.fi { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--color-border-tertiary); }</p>
-<p class="p1">.fi:last-child { border-bottom: none; padding-bottom: 0; }</p>
-<p class="p1">.fi-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }</p>
-<p class="p1">.fi-good { background: #EAF3DE; }</p>
-<p class="p1">.fi-warn { background: #FAEEDA; }</p>
-<p class="p1">.improve-item { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px; margin-bottom: 10px; border: 1px solid var(--color-border-tertiary); }</p>
-<p class="p1">.improve-item:last-child { margin-bottom: 0; }</p>
-<p class="p1">.improve-before { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 4px; font-weight: 600; }</p>
-<p class="p1">.improve-text { font-size: 13px; color: var(--color-text-primary); line-height: 1.6; font-weight: 500; }</p>
-<p class="p1">&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1">&lt;div class="app"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="header"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="logo"&gt;lu&lt;span&gt;me&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tagline"&gt;AI 뷰티 컨설턴트&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="step-nav"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="snav active" id="nav1"&gt;&lt;div class="snav-circle"&gt;1&lt;/div&gt;&lt;div class="snav-label"&gt;얼굴 분석&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="snav-line"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="snav" id="nav2"&gt;&lt;div class="snav-circle"&gt;2&lt;/div&gt;&lt;div class="snav-label"&gt;헤어&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="snav-line"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="snav" id="nav3"&gt;&lt;div class="snav-circle"&gt;3&lt;/div&gt;&lt;div class="snav-label"&gt;메이크업&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="err-box" id="err-box"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="gender-wrap" id="screen-gender"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-point);font-weight:700;margin-bottom:8px;"&gt;lume&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="gender-title"&gt;안녕하세요 👋&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="gender-sub"&gt;성별을 선택하면 해당 성별 평균과 비교해서 정확한 분석을 드려요.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="gender-btns"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="g-btn" onclick="selectGender('female', this)"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="g-icon"&gt;&lt;i class="ti ti-woman"&gt;&lt;/i&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="g-label"&gt;여성&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="g-btn" onclick="selectGender('male', this)"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="g-icon"&gt;&lt;i class="ti ti-man"&gt;&lt;/i&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="g-label"&gt;남성&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="screen" id="screen-upload"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="sec-label"&gt;Step 1 · 얼굴 분석&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card-title"&gt;생얼 사진을 올려주세요&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card-body"&gt;AI가 얼굴형·안면 비율·피부톤·이목구비를 분석해드려요.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;img id="preview" class="preview-img" alt="미리보기"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="upload-box" id="upload-box"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;input type="file" accept="image/*" id="file-input"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;i class="ti ti-camera" style="font-size:32px;color:var(--color-point);display:block;margin-bottom:8px;"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="font-size:15px;font-weight:600;color:#1a1a1a;margin-bottom:4px;"&gt;사진 업로드&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="font-size:13px;color:#666;"&gt;정면 생얼 사진 권장&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="guide-box"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="guide-row"&gt;&lt;i class="ti ti-check" style="color:#639922;font-size:16px;"&gt;&lt;/i&gt; 자연광, 정면, 무표정&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="guide-row"&gt;&lt;i class="ti ti-check" style="color:#639922;font-size:16px;"&gt;&lt;/i&gt; 머리카락 귀 뒤로 넘기기&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="guide-row"&gt;&lt;i class="ti ti-x" style="color:#E24B4A;font-size:16px;"&gt;&lt;/i&gt; 마스크·선글라스 불가&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="cta-btn" id="start-btn" disabled onclick="startAnalysis()"&gt;분석 시작&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="loading-wrap" id="loading1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="spinner"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="l-msg" id="l1msg"&gt;얼굴 분석 중...&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="l-sub" id="l1sub"&gt;잠시만 기다려주세요&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="result-wrap" style="display:none;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="report-tabs"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="rtab active" onclick="switchTab('face',this)"&gt;얼굴 분석&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="rtab" onclick="switchTab('hair',this)"&gt;헤어&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="rtab" onclick="switchTab('makeup',this)"&gt;메이크업&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tab-panel active" id="tab-face"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card reveal"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sec-label"&gt;얼굴형&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card-title" id="r-face-shape"&gt;—&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card-body" id="r-summary"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card reveal"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sec-label"&gt;안면 3등분 비율 (세로)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card-body" style="margin-bottom:14px; font-weight: 500;"&gt;상안부(이마) : 중안부(눈~코) : 하안부(코~턱)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="ratio-visual"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="ratio-face" id="ratio-face"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="ratio-seg" id="seg-top" style="background:#7F77DD;flex:33;"&gt;상&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="ratio-seg" id="seg-mid" style="background:var(--color-point);flex:33;"&gt;중&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="ratio-seg" id="seg-bot" style="background:#1D9E75;flex:34;"&gt;하&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="ratio-labels" id="ratio-labels"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="legend"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="leg"&gt;&lt;div class="leg-dot" style="background:#639922;"&gt;&lt;/div&gt;평균보다 좋음&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="leg"&gt;&lt;div class="leg-dot" style="background:#888;"&gt;&lt;/div&gt;평균 수준&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="leg"&gt;&lt;div class="leg-dot" style="background:#E24B4A;"&gt;&lt;/div&gt;평균보다 낮음&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="leg"&gt;&lt;div class="leg-dot" style="background:var(--color-point);"&gt;&lt;/div&gt;&lt;span id="avg-lbl1"&gt;여성 평균&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="leg"&gt;&lt;div class="leg-dot" style="background:#378ADD;opacity:0.8;"&gt;&lt;/div&gt;황금비율&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="bars-ratio"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card reveal"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sec-label"&gt;얼굴 너비 비율 (가로)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="legend"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="leg"&gt;&lt;div class="leg-dot" style="background:#639922;"&gt;&lt;/div&gt;평균보다 넓음&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="leg"&gt;&lt;div class="leg-dot" style="background:#888;"&gt;&lt;/div&gt;평균 수준&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="leg"&gt;&lt;div class="leg-dot" style="background:#E24B4A;"&gt;&lt;/div&gt;평균보다 좁음&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="leg"&gt;&lt;div class="leg-dot" style="background:var(--color-point);"&gt;&lt;/div&gt;&lt;span id="avg-lbl2"&gt;여성 평균&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="bars-width"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card reveal"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sec-label"&gt;피부톤&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card-title" id="r-skin-tone"&gt;—&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card-body" id="r-skin-desc"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="tone-grid" id="tone-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="tone-item"&gt;&lt;div class="tone-swatch" style="background:#F2D8CE;"&gt;&lt;/div&gt;&lt;div class="tone-info"&gt;&lt;div class="tone-cat"&gt;베이스&lt;/div&gt;&lt;div class="tone-name"&gt;핑크 베이지&lt;/div&gt;&lt;div class="tone-product"&gt;&lt;i class="ti ti-point" style="color:var(--color-point);font-size:10px;"&gt;&lt;/i&gt;에스쁘아 N13&lt;/div&gt;&lt;div class="tone-product"&gt;&lt;i class="ti ti-point" style="color:var(--color-point);font-size:10px;"&gt;&lt;/i&gt;헤라 블랙쿠션 #21P&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="tone-item"&gt;&lt;div class="tone-swatch" style="background:#D9969B;"&gt;&lt;/div&gt;&lt;div class="tone-info"&gt;&lt;div class="tone-cat"&gt;블러셔&lt;/div&gt;&lt;div class="tone-name"&gt;쿨 로즈 핑크&lt;/div&gt;&lt;div class="tone-product"&gt;&lt;i class="ti ti-point" style="color:var(--color-point);font-size:10px;"&gt;&lt;/i&gt;롬앤 퍼지 #05&lt;/div&gt;&lt;div class="tone-product"&gt;&lt;i class="ti ti-point" style="color:var(--color-point);font-size:10px;"&gt;&lt;/i&gt;NARS Orgasm&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="tone-item"&gt;&lt;div class="tone-swatch" style="background:#B85C6A;"&gt;&lt;/div&gt;&lt;div class="tone-info"&gt;&lt;div class="tone-cat"&gt;립&lt;/div&gt;&lt;div class="tone-name"&gt;쿨 로즈 버건디&lt;/div&gt;&lt;div class="tone-product"&gt;&lt;i class="ti ti-point" style="color:var(--color-point);font-size:10px;"&gt;&lt;/i&gt;롬앤 제로벨벳 #09&lt;/div&gt;&lt;div class="tone-product"&gt;&lt;i class="ti ti-point" style="color:var(--color-point);font-size:10px;"&gt;&lt;/i&gt;3CE 벨벳틴트&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="tone-item"&gt;&lt;div class="tone-swatch" style="background:#8A6B72;"&gt;&lt;/div&gt;&lt;div class="tone-info"&gt;&lt;div class="tone-cat"&gt;아이섀도우&lt;/div&gt;&lt;div class="tone-name"&gt;쿨 모브 로즈&lt;/div&gt;&lt;div class="tone-product"&gt;&lt;i class="ti ti-point" style="color:var(--color-point);font-size:10px;"&gt;&lt;/i&gt;어반디케이 Naked3&lt;/div&gt;&lt;div class="tone-product"&gt;&lt;i class="ti ti-point" style="color:var(--color-point);font-size:10px;"&gt;&lt;/i&gt;클리오 #02 Rose&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card reveal"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sec-label"&gt;이목구비 특징&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="legend" style="margin-bottom:8px;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="leg"&gt;&lt;div class="leg-dot" style="background:#639922;"&gt;&lt;/div&gt;평균보다 좋음&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="leg"&gt;&lt;div class="leg-dot" style="background:#888;"&gt;&lt;/div&gt;평균 수준&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="leg"&gt;&lt;div class="leg-dot" style="background:#E24B4A;"&gt;&lt;/div&gt;보완 필요&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="group-title"&gt;눈&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="feature-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-good"&gt;&lt;i class="ti ti-eye feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;눈 크기&lt;/div&gt;&lt;div class="feat-sub"&gt;보통~큰 편, 강조 메이크업 효과 좋음&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-good"&gt;&lt;i class="ti ti-arrows-left-right feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;눈 간격&lt;/div&gt;&lt;div class="feat-sub"&gt;적당한 간격, 균형 잡힌 인상&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-warn" id="feat-eyelid"&gt;&lt;i class="ti ti-eye-closed feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title" id="feat-eyelid-title"&gt;홑꺼풀&lt;/div&gt;&lt;div class="feat-sub" id="feat-eyelid-sub"&gt;음영 섀도우·점막 라이너 필수&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-warn"&gt;&lt;i class="ti ti-ripple feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;눈두덩이 살&lt;/div&gt;&lt;div class="feat-sub"&gt;매트 브라운으로 음영 필수&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-neu"&gt;&lt;i class="ti ti-trending-up feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;눈꼬리 방향&lt;/div&gt;&lt;div class="feat-sub"&gt;수평형, 살짝 올려 그리면 또렷&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-warn"&gt;&lt;i class="ti ti-border-bottom feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;애굣살&lt;/div&gt;&lt;div class="feat-sub"&gt;뚜렷한 편, 언더라인 최소화&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="group-title"&gt;눈썹&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="feature-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-warn"&gt;&lt;i class="ti ti-pencil feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;눈썹 형태&lt;/div&gt;&lt;div class="feat-sub"&gt;흐릿함, 일자형으로 또렷하게&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-warn"&gt;&lt;i class="ti ti-arrow-bar-right feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;눈썹 길이&lt;/div&gt;&lt;div class="feat-sub"&gt;짧은 편, 길이 확보 필요&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="group-title"&gt;코 · 입술&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="feature-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-neu"&gt;&lt;i class="ti ti-arrow-bar-down feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;콧대&lt;/div&gt;&lt;div class="feat-sub"&gt;보통, 쉐딩으로 입체감 추가&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-neu"&gt;&lt;i class="ti ti-space feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;인중 길이&lt;/div&gt;&lt;div class="feat-sub"&gt;보통 수준&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-good"&gt;&lt;i class="ti ti-rosette feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;입술 볼륨&lt;/div&gt;&lt;div class="feat-sub"&gt;도톰한 편, 립 메이크업 효과 좋음&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-neu"&gt;&lt;i class="ti ti-bow feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;입술 모양&lt;/div&gt;&lt;div class="feat-sub"&gt;균형 잡힌 편&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="group-title"&gt;얼굴형&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="feature-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-good"&gt;&lt;i class="ti ti-oval feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;얼굴형&lt;/div&gt;&lt;div class="feat-sub"&gt;계란형에 가까워 다양한 스타일 가능&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-good"&gt;&lt;i class="ti ti-sparkles feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;피부결&lt;/div&gt;&lt;div class="feat-sub"&gt;깨끗하고 밝음&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-warn"&gt;&lt;i class="ti ti-arrows-horizontal feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;볼 살&lt;/div&gt;&lt;div class="feat-sub"&gt;있는 편, 쉐딩+블러셔로 보정&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="feat-card feat-good"&gt;&lt;i class="ti ti-rectangle feat-icon"&gt;&lt;/i&gt;&lt;div class="feat-title"&gt;이마&lt;/div&gt;&lt;div class="feat-sub"&gt;넓고 깨끗, 이마 오픈도 잘 어울림&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tab-panel" id="tab-hair"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card reveal"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sec-label"&gt;헤어 컨설팅&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card-title"&gt;세로 길이감이 핵심이에요&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card-body"&gt;얼굴 옆을 좁히고 위로 길어 보이게 만드는 헤어가 포인트예요.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card reveal"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sec-label"&gt;추천 스타일&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hair-item"&gt;&lt;span class="hair-badge badge-good"&gt;1순위 강추&lt;/span&gt;&lt;div class="hair-name"&gt;레이어드 미디엄 (쇄골 기장)&lt;/div&gt;&lt;div class="hair-desc"&gt;끝에 레이어를 넣어 볼 옆을 자연스럽게 커버. C컬이나 S컬 펌을 더하면 효과 두 배예요.&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hair-item"&gt;&lt;span class="hair-badge badge-good"&gt;2순위 추천&lt;/span&gt;&lt;div class="hair-name"&gt;히피펌 / 내추럴 웨이브&lt;/div&gt;&lt;div class="hair-desc"&gt;자연스러운 웨이브로 세로 길이감 UP. 볼 살 있는 얼굴에 잘 어울려요.&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hair-item"&gt;&lt;span class="hair-badge badge-good"&gt;3순위 추천&lt;/span&gt;&lt;div class="hair-name"&gt;롱 밥 C컬 (턱선 아래 5cm)&lt;/div&gt;&lt;div class="hair-desc"&gt;C컬로 끝을 안으로 말아주면 볼 살을 자연스럽게 가려줘요.&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hair-item"&gt;&lt;span class="hair-badge badge-warn"&gt;비추천&lt;/span&gt;&lt;div class="hair-name"&gt;턱선 딱 맞는 단발 밥&lt;/div&gt;&lt;div class="hair-desc"&gt;턱선을 강조해 얼굴이 더 넓어 보여요.&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card reveal"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sec-label"&gt;앞머리 &amp; 볼륨&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="pills"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="pill pill-good"&gt;✓ 이마 오픈 OK&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="pill pill-good"&gt;✓ 사이드 뱅&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="pill pill-good"&gt;✓ 시스루 뱅&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="pill pill-good"&gt;✓ 정수리 볼륨&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="pill pill-warn"&gt;✗ 일자 두꺼운 뱅&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="pill pill-warn"&gt;✗ 사이드 볼륨&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tab-panel" id="tab-makeup"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="makeup-upload-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="sec-label"&gt;Step 3 · 메이크업 피드백&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-title"&gt;화장한 사진을 올려주세요&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-body"&gt;AI가 잘된 점·보완할 점·개선 방법을 알려드려요.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;img id="makeup-preview" class="preview-img" alt="메이크업 미리보기"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="upload-box" id="makeup-upload-box"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;input type="file" accept="image/*" id="makeup-input"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;i class="ti ti-camera" style="font-size:32px;color:var(--color-point);display:block;margin-bottom:8px;"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="font-size:15px;font-weight:600;color:#1a1a1a;margin-bottom:4px;"&gt;화장한 사진 업로드&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div style="font-size:13px;color:#666;"&gt;정면 사진 권장&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="cta-btn" id="makeup-btn" disabled onclick="startMakeupAnalysis()"&gt;메이크업 분석하기&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="loading-wrap" id="loading3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="spinner"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="l-msg" id="l3msg"&gt;메이크업 분석 중...&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="l-sub" id="l3sub"&gt;잠시만 기다려주세요&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="makeup-result" style="display:none;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card reveal"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="sec-label"&gt;전체 평가&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="score-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="score-num" id="r3score"&gt;—&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="flex:1;"&gt;&lt;div class="score-bar"&gt;&lt;div class="score-fill" id="r3fill"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style="font-size:13px;color:#666;margin-top:8px;line-height:1.4;" id="r3comment"&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card reveal"&gt;&lt;div class="sec-label"&gt;잘 된 점&lt;/div&gt;&lt;div id="r3good"&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card reveal"&gt;&lt;div class="sec-label"&gt;보완할 점&lt;/div&gt;&lt;div id="r3warn"&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card reveal"&gt;&lt;div class="sec-label"&gt;이렇게 바꿔보세요&lt;/div&gt;&lt;div id="r3improve"&gt;&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="ghost-btn" onclick="retakeMakeup()"&gt;다른 사진으로 다시 분석&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;script&gt;</p>
-<p class="p1">let gender = 'female';</p>
-<p class="p1">let uploadedFile = null;</p>
-<p class="p1">let makeupFile = null;</p>
-<p class="p2"><br></p>
-<p class="p1">const avgData = {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>female: { ratio: { top:34,mid:33,bot:33 }, width: {'이마 너비':65,'광대 너비':68,'턱선 너비':56,'얼굴 길이 비율':58} },</p>
-<p class="p1"><span class="Apple-converted-space">  </span>male: <span class="Apple-converted-space">  </span>{ ratio: { top:33,mid:34,bot:33 }, width: {'이마 너비':70,'광대 너비':74,'턱선 너비':68,'얼굴 길이 비율':63} }</p>
-<p class="p1">};</p>
-<p class="p2"><br></p>
-<p class="p1">let myData = {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>ratio: { top:33, mid:33, bot:34 },</p>
-<p class="p1"><span class="Apple-converted-space">  </span>width: { '이마 너비':{v:65,l:'보통'}, '광대 너비':{v:68,l:'보통'}, '턱선 너비':{v:52,l:'좁음'}, '얼굴 길이 비율':{v:58,l:'보통'} }</p>
-<p class="p1">};</p>
-<p class="p2"><br></p>
-<p class="p1">function showErr(msg) {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const el = document.getElementById('err-box');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>el.textContent = '⚠️ ' + msg;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>el.style.display = 'block';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>setTimeout(() =&gt; el.style.display = 'none', 8000);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function selectGender(g, el) {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>gender = g;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.g-btn').forEach(b =&gt; b.classList.remove('selected'));</p>
-<p class="p1"><span class="Apple-converted-space">  </span>el.classList.add('selected');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>setTimeout(() =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('screen-gender').style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('screen-upload').classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}, 180);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">document.getElementById('file-input').addEventListener('change', function() {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>if (!this.files || !this.files[0]) return;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>uploadedFile = this.files[0];</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const prev = document.getElementById('preview');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>prev.src = URL.createObjectURL(uploadedFile);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>prev.style.display = 'block';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('upload-box').style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('start-btn').disabled = false;</p>
-<p class="p1">});</p>
-<p class="p2"><br></p>
-<p class="p1">document.getElementById('makeup-input').addEventListener('change', function() {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>if (!this.files || !this.files[0]) return;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>makeupFile = this.files[0];</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const prev = document.getElementById('makeup-preview');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>prev.src = URL.createObjectURL(makeupFile);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>prev.style.display = 'block';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('makeup-upload-box').style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('makeup-btn').disabled = false;</p>
-<p class="p1">});</p>
-<p class="p2"><br></p>
-<p class="p1">function setNav(n, state) {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const el = document.getElementById('nav' + n);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>el.className = 'snav ' + state;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>el.querySelector('.snav-circle').textContent = state === 'done' ? '✓' : n;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">// 스크롤 애니메이션 관찰자</p>
-<p class="p1">const spyScroll = new IntersectionObserver((entries) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>entries.forEach(entry =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>if (entry.isIntersecting) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>entry.target.classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>});</p>
-<p class="p1">}, { threshold: 0.05 });</p>
-<p class="p2"><br></p>
-<p class="p1">function initScrollAnimation() {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.reveal').forEach(el =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>spyScroll.observe(el);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>});</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">async function startAnalysis() {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('screen-upload').classList.remove('active');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('loading1').style.display = 'block';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>setNav(1, 'active');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>const msgs = [['얼굴 윤곽 인식 중...','이목구비 위치 파악 중'],['피부톤 분석 중...','안면 비율 측정 중'],['리포트 생성 중...','거의 다 됐어요']];</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let si = 0;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const lt = setInterval(() =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const s = msgs[Math.min(si++, msgs.length-1)];</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('l1msg').textContent = s[0];</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('l1sub').textContent = s[1];</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}, 1100);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>try {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>await new Promise(r =&gt; setTimeout(r, 2500));</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const d = {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>face_shape: '계란형',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>summary: '전체적으로 균형 잡힌 얼굴형이에요. 이마가 넓고 턱선이 부드럽게 좁아지는 이상적인 비율을 가졌어요.',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>skin_tone: '웜 베이지',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>skin_desc: '황기가 살짝 도는 따뜻한 베이지 톤이에요. 웜 컬러 메이크업이 잘 어울려요.',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>eye_type: '속쌍꺼풀',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>ratio: { top: 34, mid: 33, bot: 33 },</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>forehead: { value: 67, label: '보통' },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>cheekbone: { value: 70, label: '보통' },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>jawline: { value: 54, label: '좁음' },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>length_ratio: { value: 60, label: '보통' }</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>if (d.ratio) myData.ratio = d.ratio;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>if (d.width) myData.width = {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>'이마 너비': { v: d.width.forehead?.value || 65, l: d.width.forehead?.label || '보통' },</p>
-<p class="p1"><span class="Apple-converted-space">      </span>'광대 너비': { v: d.width.cheekbone?.value || 68, l: d.width.cheekbone?.label || '보통' },</p>
-<p class="p1"><span class="Apple-converted-space">      </span>'턱선 너비': { v: d.width.jawline?.value || 52, l: d.width.jawline?.label || '좁음' },</p>
-<p class="p1"><span class="Apple-converted-space">      </span>'얼굴 길이 비율': { v: d.width.length_ratio?.value || 58, l: d.width.length_ratio?.label || '보통' }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>clearInterval(lt);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('loading1').style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('result-wrap').style.display = 'block';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>setNav(1, 'done');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('r-face-shape').textContent = d.face_shape || '—';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('r-summary').textContent = d.summary || '';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('r-skin-tone').textContent = d.skin_tone || '—';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('r-skin-desc').textContent = d.skin_desc || '';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>if (d.eye_type) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('feat-eyelid-title').textContent = d.eye_type;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>renderRatio();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>renderWidth();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>initScrollAnimation(); // 애니메이션 작동 시작</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>} catch(e) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>clearInterval(lt);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('loading1').style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('screen-upload').classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>showErr(e.message);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function classify(v, avg, tol) {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>return v - avg &gt; tol ? 'above' : v - avg &lt; -tol ? 'below' : 'avg';</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function renderRatio() {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const r = myData.ratio;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const avgs = avgData[gender].ratio;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const gLabel = gender === 'female' ? '여성' : '남성';</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('seg-top').style.flex = r.top;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('seg-mid').style.flex = r.mid;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('seg-bot').style.flex = r.bot;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>const items = [</p>
-<p class="p1"><span class="Apple-converted-space">    </span>{ key:'top', name:'상안부 (이마)', avg:avgs.top, color:'#7F77DD' },</p>
-<p class="p1"><span class="Apple-converted-space">    </span>{ key:'mid', name:'중안부 (눈~코)', avg:avgs.mid, color: 'var(--color-point)' },</p>
-<p class="p1"><span class="Apple-converted-space">    </span>{ key:'bot', name:'하안부 (코~턱)', avg:avgs.bot, color:'#1D9E75' }</p>
-<p class="p1"><span class="Apple-converted-space">  </span>];</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('ratio-labels').innerHTML = items.map(l =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const myV = r[l.key];</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const cls = classify(myV, l.avg, 1.5);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const diffStr = cls==='above' ? `&lt;span style="color:#639922; font-weight:600;"&gt;▲ 평균+${(myV-l.avg).toFixed(1)}%&lt;/span&gt;`</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>: cls==='below' ? `&lt;span style="color:#E24B4A; font-weight:600;"&gt;▼ 평균${(myV-l.avg).toFixed(1)}%&lt;/span&gt;`</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>: `&lt;span style="color:#888; font-weight:600;"&gt;≈ 평균 수준&lt;/span&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>return `&lt;div class="ratio-label-item"&gt;&lt;div class="ratio-dot" style="background:${l.color};"&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="ratio-main"&gt;${l.name} — ${myV}%&lt;/div&gt;&lt;div class="ratio-sub"&gt;${gLabel} 평균 ${l.avg}% · ${diffStr}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}).join('');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('avg-lbl1').textContent = gLabel + ' 평균';</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('bars-ratio').innerHTML = items.map(l =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const myV = r[l.key];</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const cls = classify(myV, l.avg, 1.5);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const scale = v =&gt; Math.max(0, Math.min(100, ((v-20)/30*100))).toFixed(1);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const myW = scale(myV), avgW = scale(l.avg), gldW = scale(33.3);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const fillCls = cls==='above'?'fill-above':cls==='below'?'fill-below':'fill-avg';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const valCls<span class="Apple-converted-space">  </span>= cls==='above'?'val-above' :cls==='below'?'val-below' :'val-avg';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const status<span class="Apple-converted-space">  </span>= cls==='above'?'평균보다 높음':cls==='below'?'평균보다 낮음':'평균 수준';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>return `&lt;div class="bar-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="bar-label-row"&gt;&lt;span class="bar-name"&gt;${l.name} 비율&lt;/span&gt;&lt;span class="bar-value ${valCls}"&gt;${myV}%&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="bar-wrap"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="bar-fill ${fillCls}" data-w="${myW}" style="width:0%;"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="avg-mark" style="left:${avgW}%;"&gt;&lt;div class="avg-mark-line"&gt;&lt;/div&gt;&lt;div class="avg-mark-label"&gt;${gLabel} ${l.avg}%&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="golden-mark" style="left:${gldW}%;"&gt;&lt;div class="golden-mark-line"&gt;&lt;/div&gt;&lt;div class="golden-mark-label"&gt;황금 33.3%&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="bar-desc"&gt;${status} · 내 수치 ${myV}% (기준선과 비교해 보세요)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}).join('');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>setTimeout(() =&gt; animateBars('bars-ratio'), 200);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function renderWidth() {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const avgs = avgData[gender].width;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const gLabel = gender === 'female' ? '여성' : '남성';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('avg-lbl2').textContent = gLabel + ' 평균';</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('bars-width').innerHTML = Object.entries(myData.width).map(([name, my]) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const avg = avgs[name];</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const cls = classify(my.v, avg, 4);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const fillCls = cls==='above'?'fill-above':cls==='below'?'fill-below':'fill-avg';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const valCls<span class="Apple-converted-space">  </span>= cls==='above'?'val-above' :cls==='below'?'val-below' :'val-avg';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const status<span class="Apple-converted-space">  </span>= cls==='above'?'평균보다 넓음':cls==='below'?'평균보다 좁음':'평균 수준';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>return `&lt;div class="bar-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="bar-label-row"&gt;&lt;span class="bar-name"&gt;${name}&lt;/span&gt;&lt;span class="bar-value ${valCls}"&gt;${my.l}&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="bar-wrap"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="bar-fill ${fillCls}" data-w="${my.v}" style="width:0%;"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="avg-mark" style="left:${avg}%;"&gt;&lt;div class="avg-mark-line"&gt;&lt;/div&gt;&lt;div class="avg-mark-label"&gt;${gLabel} 평균&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="bar-desc"&gt;${status} · 내 수치 ${my.v} vs ${gLabel} 평균 ${avg}&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}).join('');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>setTimeout(() =&gt; animateBars('bars-width'), 200);</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function animateBars(id) {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById(id).querySelectorAll('[data-w]').forEach(el =&gt; el.style.width = el.dataset.w + '%');</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function switchTab(id, el) {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.tab-panel').forEach(p =&gt; p.classList.remove('active'));</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.rtab').forEach(t =&gt; t.classList.remove('active'));</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('tab-' + id).classList.add('active');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>el.classList.add('active');</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">  </span>// 탭 전환 시 새로 노출된 카드들의 애니메이션 재확인</p>
-<p class="p1"><span class="Apple-converted-space">  </span>initScrollAnimation();</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">async function startMakeupAnalysis() {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('makeup-upload-section').style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('loading3').style.display = 'block';</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>const msgs = [['메이크업 구성 분석 중...','베이스·눈·입술 파악 중'],['잘된 점 / 보완점 도출 중...','거의 다 됐어요']];</p>
-<p class="p1"><span class="Apple-converted-space">  </span>let si = 0;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const lt = setInterval(() =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const s = msgs[Math.min(si++, msgs.length-1)];</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('l3msg').textContent = s[0];</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('l3sub').textContent = s[1];</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}, 1200);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>try {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>await new Promise(r =&gt; setTimeout(r, 2500));</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const s = {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>score: 78,</p>
-<p class="p1"><span class="Apple-converted-space">      </span>score_comment: '전체적으로 깔끔하고 자연스러운 메이크업이에요. 눈 메이크업을 조금만 보완하면 훨씬 또렷한 인상을 줄 수 있어요.',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>good: [</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ title: '베이스 메이크업', desc: '피부 표현이 자연스럽고 들뜸 없이 밀착되어 있어요.' },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ title: '립 컬러', desc: '입술 색이 피부톤과 잘 어울려 생기 있어 보여요.' },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ title: '전체 밸런스', desc: '너무 과하지 않고 데일리로 완성도 높은 메이크업이에요.' }</p>
-<p class="p1"><span class="Apple-converted-space">      </span>],</p>
-<p class="p1"><span class="Apple-converted-space">      </span>warn: [</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ title: '눈썹 라인', desc: '눈썹이 전체적으로 흐려서 인상이 약해 보여요.' },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ title: '눈 음영', desc: '눈두덩이 음영이 없어 눈이 답답해 보일 수 있어요.' },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ title: '언더라인', desc: '애굣살이 있는 편이라 언더라인이 더해지면 무거워 보여요.' }</p>
-<p class="p1"><span class="Apple-converted-space">      </span>],</p>
-<p class="p1"><span class="Apple-converted-space">      </span>improve: [</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ before: '흐린 눈썹', text: '카키 브라운 계열로 일자형에 가깝게 결을 채워주면 또렷한 인상이 돼요.' },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ before: '음영 없는 눈', text: '매트 브라운 섀도우로 쌍꺼풀 라인에 살짝 음영을 넣어주세요.' },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ before: '밋밋한 얼굴 윤곽', text: '광대 아래 쉐딩을 살짝 더하면 얼굴이 훨씬 갸름해 보여요.' }</p>
-<p class="p1"><span class="Apple-converted-space">      </span>]</p>
-<p class="p1"><span class="Apple-converted-space">    </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>clearInterval(lt);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('loading3').style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('makeup-result').style.display = 'block';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>setNav(3, 'done');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('r3score').textContent = s.score;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('r3comment').textContent = s.score_comment;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>setTimeout(() =&gt; { document.getElementById('r3fill').style.width = s.score + '%'; }, 200);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('r3good').innerHTML = (s.good||[]).map(g =&gt; `&lt;div class="fi"&gt;&lt;div class="fi-icon fi-good"&gt;&lt;i class="ti ti-check" style="color:#3B6D11;font-size:13px;"&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="fi-title"&gt;${g.title}&lt;/div&gt;&lt;div class="fi-desc"&gt;${g.desc}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`).join('');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('r3warn').innerHTML = (s.warn||[]).map(w =&gt; `&lt;div class="fi"&gt;&lt;div class="fi-icon fi-warn"&gt;&lt;i class="ti ti-alert-triangle" style="color:#BA7517;font-size:13px;"&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="fi-title"&gt;${w.title}&lt;/div&gt;&lt;div class="fi-desc"&gt;${w.desc}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`).join('');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('r3improve').innerHTML = (s.improve||[]).map(i =&gt; `&lt;div class="improve-item"&gt;&lt;div class="improve-before"&gt;현재 → ${i.before}&lt;/div&gt;&lt;div class="improve-text"&gt;${i.text}&lt;/div&gt;&lt;/div&gt;`).join('');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>initScrollAnimation();</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>} catch(e) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>clearInterval(lt);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('loading3').style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('makeup-upload-section').style.display = 'block';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>showErr(e.message);</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function retakeMakeup() {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>makeupFile = null;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('makeup-result').style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('makeup-preview').style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('makeup-upload-box').style.display = 'block';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('makeup-btn').disabled = true;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('makeup-input').value = '';</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('makeup-upload-section').style.display = 'block';</p>
-<p class="p1">}</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
-</body>
-</html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>lume · AI 뷰티 컨설턴트</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --color-text-primary: #1c1c1e;
+  --color-text-secondary: #76767f;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f9f9fb;
+  --color-border-tertiary: #f2f2f7;
+  --color-border-secondary: #e5e5ea;
+  --color-point: #C8956C;
+  --color-point-bg: #fdf8f4;
+  --card-shadow: 0 8px 24px rgba(28, 28, 30, 0.04), 0 1px 2px rgba(28, 28, 30, 0.02);
+  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  --border-radius-lg: 20px;
+  --border-radius-md: 14px;
+}
+
+/* 💻 PC와 모바일 모두에서 완벽한 레이아웃을 잡아주는 설정 */
+body { 
+  background: #e5e5ea; /* PC 배경은 살짝 어두운 톤으로 감싸줌 */
+  font-family: var(--font-sans); 
+  min-height: 100vh; 
+  -webkit-font-smoothing: antialiased; 
+  display: flex;
+  justify-content: center; /* 화면 정중앙 배치 */
+  align-items: flex-start;
+}
+
+.app { 
+  width: 100%;
+  max-width: 480px; /* 스마트폰 가로 사이즈 고정 */
+  margin: 0 auto; 
+  background: var(--color-background-primary); 
+  min-height: 100vh; 
+  padding-bottom: 4rem; 
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.08); /* 양옆을 고급스럽게 띄워주는 그림자 */
+}
+
+/* 스크롤 애니메이션 효과 */
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.7s cubic-bezier(0.215, 0.610, 0.355, 1), 
+              transform 0.7s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 헤더 */
+.header { text-align: center; padding: 1.25rem 1rem 1rem; border-bottom: 0.5px solid var(--color-border-tertiary); position: sticky; top: 0; background: white; z-index: 10; }
+.logo { font-size: 22px; font-weight: 600; letter-spacing: 0.08em; color: #1a1a1a; }
+.logo span { color: var(--color-point); }
+.tagline { font-size: 11px; color: var(--color-text-secondary); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; font-weight: 500; }
+
+/* 스텝 네비 */
+.step-nav { 
+  display: flex; 
+  align-items: center; 
+  padding: 1.25rem 1.5rem; 
+  background: var(--color-background-secondary); 
+  border-bottom: 1px solid var(--color-border-tertiary);
+}
+.snav { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; opacity: 0.35; transition: all 0.3s; }
+.snav.active { opacity: 1; }
+.snav.done { opacity: 0.9; }
+.snav-circle { 
+  width: 32px; 
+  height: 32px; 
+  border-radius: 50%; 
+  border: 1.5px solid var(--color-border-secondary); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 12px; 
+  font-weight: 600; 
+  background: white; 
+  color: var(--color-text-secondary);
+  transition: all 0.3s ease;
+}
+.snav.active .snav-circle { 
+  background: var(--color-point); 
+  border-color: var(--color-point); 
+  color: white; 
+  box-shadow: 0 4px 12px rgba(200, 149, 108, 0.3); 
+}
+.snav.done .snav-circle { background: #EAF3DE; border-color: #C0DD97; color: #3B6D11; font-size: 14px; }
+.snav-label { font-size: 11px; color: var(--color-text-secondary); text-align: center; font-weight: 500; }
+.snav.active .snav-label { color: var(--color-point); font-weight: 700; }
+.snav-line { height: 1px; flex: 0.4; background: var(--color-border-secondary); margin-bottom: 20px; }
+
+/* 공통 UI */
+.screen { display: none; padding: 1.25rem 1rem 0; }
+.screen.active { display: block; }
+.card { 
+  background: var(--color-background-primary); 
+  border: 1px solid var(--color-border-tertiary); 
+  border-radius: var(--border-radius-lg); 
+  padding: 1.5rem; 
+  margin-bottom: 18px; 
+  box-shadow: var(--card-shadow); 
+}
+.sec-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-point); font-weight: 700; margin-bottom: 8px; }
+.card-title { font-size: 19px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 8px; letter-spacing: -0.02em; }
+.card-body { font-size: 14px; color: var(--color-text-secondary); line-height
