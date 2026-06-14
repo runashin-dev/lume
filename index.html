@@ -96,9 +96,10 @@ body {
 .snav.active .snav-label { color: var(--color-point); font-weight: 700; }
 .snav-line { height: 1px; flex: 0.4; background: var(--color-border-secondary); margin-bottom: 20px; }
 
-/* 공통 UI */
+/* 공통 UI 및 화면 전환 클래스 (★수정완료) */
 .screen { display: none; padding: 1.25rem 1rem 0; }
-.screen.active { display: block; }
+.screen.active { display: block !important; } /* 화면 전환이 확실하게 일어나도록 보정 */
+
 .card { 
   background: var(--color-background-primary); 
   border: 1px solid var(--color-border-tertiary); 
@@ -118,7 +119,7 @@ body {
 .ghost-btn:hover { background: var(--color-background-secondary); }
 
 /* 성별 선택 */
-.gender-wrap { padding: 2.5rem 1.25rem 0; width: 100%; }
+.gender-wrap { padding: 2.5rem 1.25rem 0; width: 100%; display: block; }
 .gender-title { font-size: 22px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 8px; letter-spacing: -0.02em; }
 .gender-sub { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 28px; line-height: 1.6; }
 .gender-btns { display: flex; gap: 14px; }
@@ -364,7 +365,7 @@ body {
           <div class="tone-item"><div class="tone-swatch" style="background:#F2D8CE;"></div><div class="tone-info"><div class="tone-cat">베이스</div><div class="tone-name">핑크 베이지</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>에스쁘아 N13</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>헤라 블랙쿠션 #21P</div></div></div>
           <div class="tone-item"><div class="tone-swatch" style="background:#D9969B;"></div><div class="tone-info"><div class="tone-cat">블러셔</div><div class="tone-name">쿨 로즈 핑크</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>롬앤 퍼지 #05</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>NARS Orgasm</div></div></div>
           <div class="tone-item"><div class="tone-swatch" style="background:#B85C6A;"></div><div class="tone-info"><div class="tone-cat">립</div><div class="tone-name">쿨 로즈 버건디</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>롬앤 제로벨벳 #09</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>3CE 벨벳틴트</div></div></div>
-          <div class="tone-item"><div class="tone-swatch" style="background:#8A6B72;"></div><div class="tone-info"><div class="tone-cat">아이섀도우</div><div class="tone-name">쿨 모브 로즈</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>어반디케이 Naked3</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>클리오 #02 Rose</div></div></div>
+          <div class="tone-item"><div class="tone-swatch" style="background:#8A6B72;"></div><div class="tone-info"><div class="tone-cat">아이섀도우</div><div class="tone-name">쿨 모브 로즈</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>어반디케이 Naked3</div><div class="tone-product"><i class="ti ti-point;font-size:10px;"></i>클리오 #02 Rose</div></div></div>
         </div>
       </div>
 
@@ -524,8 +525,10 @@ document.getElementById('makeup-input').addEventListener('change', function() {
 
 function setNav(n, state) {
   const el = document.getElementById('nav' + n);
-  el.className = 'snav ' + state;
-  el.querySelector('.snav-circle').textContent = state === 'done' ? '✓' : n;
+  if (el) {
+    el.className = 'snav ' + state;
+    el.querySelector('.snav-circle').textContent = state === 'done' ? '✓' : n;
+  }
 }
 
 const spyScroll = new IntersectionObserver((entries) => {
