@@ -96,9 +96,9 @@ body {
 .snav.active .snav-label { color: var(--color-point); font-weight: 700; }
 .snav-line { height: 1px; flex: 0.4; background: var(--color-border-secondary); margin-bottom: 20px; }
 
-/* 공통 UI 및 화면 전환 클래스 (★수정완료) */
+/* 공통 UI 및 화면 전환 클래스 */
 .screen { display: none; padding: 1.25rem 1rem 0; }
-.screen.active { display: block !important; } /* 화면 전환이 확실하게 일어나도록 보정 */
+.screen.active { display: block !important; }
 
 .card { 
   background: var(--color-background-primary); 
@@ -137,15 +137,6 @@ body {
 .guide-box { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1.15rem; margin-top: 14px; border: 1px solid var(--color-border-tertiary); }
 .guide-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--color-text-primary); margin-bottom: 8px; font-weight: 500; }
 .guide-row:last-child { margin-bottom: 0; }
-
-/* 로딩 */
-.loading-wrap { display: none; text-align: center; padding: 5rem 1.5rem; }
-.spinner { width: 42px; height: 42px; border: 3px solid #e5e5ea; border-top-color: var(--color-point); border-radius: 50%; animation: spin 0.8s cubic-bezier(0.6, 0.2, 0.1, 1) infinite; margin: 0 auto 1.5rem; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.l-msg { font-size: 17px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 6px; }
-.l-sub { font-size: 13px; color: var(--color-text-secondary); }
-
-.err-box { background: #FCEBEB; border: 1px solid #F09595; border-radius: var(--border-radius-md); padding: 12px 14px; margin: 0 1rem 12px; font-size: 13px; color: #791F1F; display: none; line-height: 1.6; }
 
 /* 탭 메뉴 */
 .report-tabs { display: flex; border-bottom: 1px solid var(--color-border-tertiary); background: white; position: sticky; top: 61px; z-index: 9; }
@@ -222,14 +213,12 @@ body {
 .tone-name { font-size: 13px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 6px; }
 .tone-product { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
 
-/* 헤어 추천 */
-.hair-item { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px; margin-bottom: 10px; border: 1px solid var(--color-border-tertiary); }
-.hair-item:last-child { margin-bottom: 0; }
-.hair-badge { display: inline-block; font-size: 10px; padding: 2px 10px; border-radius: 20px; margin-bottom: 6px; font-weight: 700; letter-spacing: -0.01em; }
-.badge-good { background: #EAF3DE; color: #27500A; border: 0.5px solid #C0DD97; }
-.badge-warn { background: #FCEBEB; color: #A32D2D; border: 0.5px solid #F09595; }
-.hair-name { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 4px; }
-.hair-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+/* 헤어 추천 (스퀘어 이미지 그리드 레이아웃 고도화) */
+.hair-card-wrapper { display: flex; gap: 16px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px; margin-bottom: 14px; border: 1px solid var(--color-border-tertiary); align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+.hair-card-wrapper:last-child { margin-bottom: 0; }
+.hair-img-box { width: 84px; height: 84px; border-radius: var(--border-radius-md); flex-shrink: 0; overflow: hidden; background: #e5e5ea; border: 1px solid var(--color-border-secondary); display: flex; align-items: center; justify-content: center; }
+.hair-text-box { flex: 1; }
+
 .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .pill { padding: 5px 12px; border-radius: 30px; font-size: 13px; font-weight: 500; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
 .pill-good { background: #EAF3DE; color: #27500A; border: 0.5px solid #C0DD97; }
@@ -319,10 +308,18 @@ body {
     </div>
 
     <div class="tab-panel active" id="tab-face">
-      <div class="card reveal">
-        <div class="sec-label">얼굴형</div>
-        <div class="card-title" id="r-face-shape">—</div>
-        <div class="card-body" id="r-summary"></div>
+      <div class="card reveal" style="display: flex; gap: 18px; align-items: center;">
+        <div style="width: 76px; height: 76px; border-radius: var(--border-radius-md); background: var(--color-point-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px dashed var(--color-point);">
+          <svg width="44" height="54" viewBox="0 0 44 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 2C11 2 4 11 4 24C4 38 12 52 22 52C32 52 40 38 40 24C40 11 33 2 22 2Z" stroke="#C8956C" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M12 20C12 20 15 17 22 17C29 17 32 20 32 20" stroke="#C8956C" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div style="flex: 1;">
+          <div class="sec-label">얼굴형</div>
+          <div class="card-title" id="r-face-shape" style="margin-bottom: 4px;">—</div>
+          <div class="card-body" id="r-summary" style="font-size: 13px; line-height: 1.5;"></div>
+        </div>
       </div>
       
       <div class="card reveal">
@@ -358,14 +355,55 @@ body {
       </div>
 
       <div class="card reveal">
-        <div class="sec-label">피부톤</div>
+        <div class="sec-label">피부톤 분석 리포트</div>
         <div class="card-title" id="r-skin-tone">—</div>
-        <div class="card-body" id="r-skin-desc"></div>
+        <div class="card-body" id="r-skin-desc" style="margin-bottom: 16px;"></div>
+        
         <div class="tone-grid" id="tone-grid">
-          <div class="tone-item"><div class="tone-swatch" style="background:#F2D8CE;"></div><div class="tone-info"><div class="tone-cat">베이스</div><div class="tone-name">핑크 베이지</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>에스쁘아 N13</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>헤라 블랙쿠션 #21P</div></div></div>
-          <div class="tone-item"><div class="tone-swatch" style="background:#D9969B;"></div><div class="tone-info"><div class="tone-cat">블러셔</div><div class="tone-name">쿨 로즈 핑크</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>롬앤 퍼지 #05</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>NARS Orgasm</div></div></div>
-          <div class="tone-item"><div class="tone-swatch" style="background:#B85C6A;"></div><div class="tone-info"><div class="tone-cat">립</div><div class="tone-name">쿨 로즈 버건디</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>롬앤 제로벨벳 #09</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>3CE 벨벳틴트</div></div></div>
-          <div class="tone-item"><div class="tone-swatch" style="background:#8A6B72;"></div><div class="tone-info"><div class="tone-cat">아이섀도우</div><div class="tone-name">쿨 모브 로즈</div><div class="tone-product"><i class="ti ti-point" style="color:var(--color-point);font-size:10px;"></i>어반디케이 Naked3</div><div class="tone-product"><i class="ti ti-point;font-size:10px;"></i>클리오 #02 Rose</div></div></div>
+          <div class="tone-item">
+            <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px solid var(--color-border-tertiary);">
+              <div style="width: 24px; height: 24px; border-radius: 50%; background: #F2D8CE; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></div>
+              <div class="tone-cat" style="margin-bottom: 0;">베이스</div>
+            </div>
+            <div class="tone-info">
+              <div class="tone-name">핑크 베이지</div>
+              <div class="tone-product"><i class="ti ti-pin" style="color:var(--color-point);"></i>에스쁘아 N13</div>
+              <div class="tone-product"><i class="ti ti-pin" style="color:var(--color-point);"></i>헤라 블랙 #21P</div>
+            </div>
+          </div>
+          <div class="tone-item">
+            <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px solid var(--color-border-tertiary);">
+              <div style="width: 24px; height: 24px; border-radius: 50%; background: #D9969B; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></div>
+              <div class="tone-cat" style="margin-bottom: 0;">블러셔</div>
+            </div>
+            <div class="tone-info">
+              <div class="tone-name">쿨 로즈 핑크</div>
+              <div class="tone-product"><i class="ti ti-pin" style="color:var(--color-point);"></i>롬앤 퍼지 #05</div>
+              <div class="tone-product"><i class="ti ti-pin" style="color:var(--color-point);"></i>NARS Orgasm</div>
+            </div>
+          </div>
+          <div class="tone-item">
+            <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px solid var(--color-border-tertiary);">
+              <div style="width: 24px; height: 24px; border-radius: 50%; background: #B85C6A; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></div>
+              <div class="tone-cat" style="margin-bottom: 0;">립</div>
+            </div>
+            <div class="tone-info">
+              <div class="tone-name">쿨 로즈 버건디</div>
+              <div class="tone-product"><i class="ti ti-pin" style="color:var(--color-point);"></i>롬앤 제로 #09</div>
+              <div class="tone-product"><i class="ti ti-pin" style="color:var(--color-point);"></i>3CE 벨벳틴트</div>
+            </div>
+          </div>
+          <div class="tone-item">
+            <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px solid var(--color-border-tertiary);">
+              <div style="width: 24px; height: 24px; border-radius: 50%; background: #8A6B72; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></div>
+              <div class="tone-cat" style="margin-bottom: 0;">아이섀도우</div>
+            </div>
+            <div class="tone-info">
+              <div class="tone-name">쿨 모브 로즈</div>
+              <div class="tone-product"><i class="ti ti-pin" style="color:var(--color-point);"></i>어반디케이 N3</div>
+              <div class="tone-product"><i class="ti ti-pin" style="color:var(--color-point);"></i>클리오 #02 Rose</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -409,19 +447,71 @@ body {
 
     <div class="tab-panel" id="tab-hair">
       <div class="card reveal">
-        <div class="sec-label">헤어 컨설팅</div>
+        <div class="sec-label">헤어 컨설팅 총평</div>
         <div class="card-title">세로 길이감이 핵심이에요</div>
         <div class="card-body">얼굴 옆을 좁히고 위로 길어 보이게 만드는 헤어가 포인트예요.</div>
       </div>
+      
       <div class="card reveal">
-        <div class="sec-label">추천 스타일</div>
-        <div class="hair-item"><span class="hair-badge badge-good">1순위 강추</span><div class="hair-name">레이어드 미디엄 (쇄골 기장)</div><div class="hair-desc">끝에 레이어를 넣어 볼 옆을 자연스럽게 커버. C컬이나 S컬 펌을 더하면 효과 두 배예요.</div></div>
-        <div class="hair-item"><span class="hair-badge badge-good">2순위 추천</span><div class="hair-name">히피펌 / 내추럴 웨이브</div><div class="hair-desc">자연스러운 웨이브로 세로 길이감 UP. 볼 살 있는 얼굴에 잘 어울려요.</div></div>
-        <div class="hair-item"><span class="hair-badge badge-good">3순위 추천</span><div class="hair-name">롱 밥 C컬 (턱선 아래 5cm)</div><div class="hair-desc">C컬로 끝을 안으로 말아주면 볼 살을 자연스럽게 가려줘요.</div></div>
-        <div class="hair-item"><span class="hair-badge badge-warn">비추천</span><div class="hair-name">턱선 딱 맞는 단발 밥</div><div class="hair-desc">턱선을 강조해 얼굴이 더 넓어 보여요.</div></div>
+        <div class="sec-label" style="margin-bottom: 14px;">추천 스타일 시각 룩북</div>
+        
+        <div class="hair-card-wrapper">
+          <div class="hair-img-box">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#76767f" stroke-width="1.2">
+              <path d="M4 3c2 4 4 6 8 6s6-2 8-6M5 9c1.5 3 3 5 7 5s5.5-2 7-5M6 14c1 2.5 2 4 6 4s5-1.5 6-4" stroke-linecap="round"/>
+              <path d="M12 2v20" stroke-dasharray="2 2"/>
+            </svg>
+          </div>
+          <div class="hair-text-box">
+            <span class="hair-badge badge-good">1순위 강추</span>
+            <div class="hair-name">레이어드 미디엄 (쇄골 기장)</div>
+            <div class="hair-desc">끝에 레이어를 넣어 볼 옆을 자연스럽게 커버. C컬이나 S컬 펌 효과 탁월.</div>
+          </div>
+        </div>
+
+        <div class="hair-card-wrapper">
+          <div class="hair-img-box">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#76767f" stroke-width="1.2">
+              <path d="M4 4c1 1 2 3 2 5s-1 4-1 6 2 3 2 5M18 4c-1 1-2 3-2 5s1 4 1 6-2 3-2 5M12 4c0 2-1 4-1 6s2 4 2 6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="hair-text-box">
+            <span class="hair-badge badge-good">2순위 추천</span>
+            <div class="hair-name">히피펌 / 내추럴 웨이브</div>
+            <div class="hair-desc">풍성하고 자연스러운 컬 웨이브로 세로 길이감 UP. 볼살 커버에 최적.</div>
+          </div>
+        </div>
+
+        <div class="hair-card-wrapper">
+          <div class="hair-img-box">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#76767f" stroke-width="1.2">
+              <path d="M5 4v10c1 2 3 2 7 2s6 0 7-2V4M8 4c1 3 2 5 4 5s3-2 4-5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="hair-text-box">
+            <span class="hair-badge badge-good">3순위 추천</span>
+            <div class="hair-name">롱 밥 C컬 (턱선 아래 5cm)</div>
+            <div class="hair-desc">C컬로 헤어 끝자락을 안으로 말아주어 턱 선과 볼 살을 부드럽게 감싸줍니다.</div>
+          </div>
+        </div>
+
+        <div class="hair-card-wrapper" style="background: #fffcfc; border-color: #fcdede;">
+          <div class="hair-img-box" style="background: #fbebeb;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#e24b4a" stroke-width="1.2">
+              <path d="M6 4v7c0 2 2 3 6 3s6-1 6-3V4M6 11h12" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="hair-text-box">
+            <span class="hair-badge badge-warn">⚠️ 절대 비추천</span>
+            <div class="hair-name" style="color: #a32d2d;">턱선에 딱 맞는 단발 칼단발</div>
+            <div class="hair-desc" style="color: #8a4a4a;">하단 보강선 가로폭이 강조되어 얼굴이 오히려 둥글고 넓어 보입니다.</div>
+          </div>
+        </div>
+
       </div>
+      
       <div class="card reveal">
-        <div class="sec-label">앞머리 & 볼륨</div>
+        <div class="sec-label">앞머리 & 볼륨 요약</div>
         <div class="pills">
           <span class="pill pill-good">✓ 이마 오픈 OK</span>
           <span class="pill pill-good">✓ 사이드 뱅</span>
@@ -564,7 +654,7 @@ async function startAnalysis() {
       face_shape: '계란형',
       summary: '전체적으로 균형 잡힌 얼굴형이에요. 이마가 넓고 턱선이 부드럽게 좁아지는 이상적인 비율을 가졌어요.',
       skin_tone: '웜 베이지',
-      skin_desc: '황기가 살짝 도는 따뜻한 베이지 톤이에요. 웜 컬러 메이크업이 잘 어울려요.',
+      skin_desc: '황기가 살짝 도는 따뜻한 베이지 톤이에요. 내추럴 웜 컬러 메이크업 계열이 가장 잘 어울립니다.',
       eye_type: '속쌍꺼풀',
       ratio: { top: 34, mid: 33, bot: 33 },
       width: {
